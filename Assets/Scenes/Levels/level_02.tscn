@@ -1,6 +1,7 @@
-[gd_scene load_steps=88 format=3 uid="uid://5djq8r0sij5n"]
+[gd_scene load_steps=91 format=3 uid="uid://5djq8r0sij5n"]
 
 [ext_resource type="Material" uid="uid://cwg64bqg7b5x6" path="res://Assets/Materials/Metal_Rough_Weathered.tres" id="1_6nca2"]
+[ext_resource type="PackedScene" uid="uid://cx2wgco3sqmvd" path="res://Assets/Scenes/area_checkpoint.tscn" id="1_wmy0g"]
 [ext_resource type="Shader" uid="uid://csidvjf2i2413" path="res://Assets/Shaders/WaterWiggle.tres" id="2_b1ygn"]
 [ext_resource type="Texture2D" uid="uid://cjld2cnah6pl0" path="res://Assets/Textures/Water/Water.png" id="2_lmv00"]
 [ext_resource type="Material" uid="uid://clrqg1aiwedt" path="res://Assets/Materials/Concrete.tres" id="2_spgfx"]
@@ -14,10 +15,14 @@
 [ext_resource type="Material" uid="uid://bb4r5wvpriif4" path="res://Assets/Materials/Wood_Planks.tres" id="7_kvgxn"]
 [ext_resource type="PackedScene" uid="uid://y2fercihb0oo" path="res://Assets/Scenes/Objects/door_open_static.tscn" id="12_tvepf"]
 [ext_resource type="PackedScene" uid="uid://gxe3tiohahc6" path="res://Assets/Scenes/Objects/downlight.tscn" id="13_qtu2d"]
+[ext_resource type="AudioStream" uid="uid://cbl560u7sawks" path="res://Sounds/WaterStream/WaterStream.ogg" id="14_qoxc3"]
 [ext_resource type="PackedScene" uid="uid://l4hbh3u6738f" path="res://Assets/Scenes/Interactables/box_spawner.tscn" id="15_4uj83"]
 [ext_resource type="MeshLibrary" uid="uid://dcuuevkoxl1di" path="res://Assets/GridMapStuff/Wall_Tiles_Edge.tres" id="16_7ognv"]
 [ext_resource type="PackedScene" uid="uid://tced2gfbrgy" path="res://Assets/Scenes/Interactables/box_button.tscn" id="17_xjchw"]
 [ext_resource type="PackedScene" uid="uid://boaoprrmj0bql" path="res://Assets/Scenes/Interactables/door_activatable.tscn" id="18_44wvr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ibt8d"]
+size = Vector3(2, 3, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hvrw5"]
 size = Vector3(8, 1, 2)
@@ -306,6 +311,13 @@ material = ExtResource("6_2ovn2")
 size = Vector3(0.25, 0.099, 0.1)
 
 [node name="Level_02" type="Node3D"]
+
+[node name="AreaCheckpoint" parent="." instance=ExtResource("1_wmy0g")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3, 1, 3)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AreaCheckpoint"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_ibt8d")
 
 [node name="Environment" type="Node3D" parent="."]
 
@@ -874,6 +886,15 @@ shape = SubResource("BoxShape3D_iw21h")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="WaterStream"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.4, 0)
 mesh = SubResource("QuadMesh_bybae")
+
+[node name="WaterSounds" type="AudioStreamPlayer3D" parent="WaterStream"]
+stream = ExtResource("14_qoxc3")
+attenuation_model = 1
+volume_db = -2.0
+unit_size = 8.0
+autoplay = true
+max_distance = 10.0
+attenuation_filter_db = -6.0
 
 [node name="DoorOpenStatic" parent="." instance=ExtResource("12_tvepf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.95, 1, -4)

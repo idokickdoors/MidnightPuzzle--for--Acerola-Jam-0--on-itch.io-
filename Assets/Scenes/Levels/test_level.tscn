@@ -1,5 +1,6 @@
-[gd_scene load_steps=25 format=3 uid="uid://valy0k08o0mt"]
+[gd_scene load_steps=27 format=3 uid="uid://valy0k08o0mt"]
 
+[ext_resource type="PackedScene" uid="uid://cx2wgco3sqmvd" path="res://Assets/Scenes/area_checkpoint.tscn" id="1_l776b"]
 [ext_resource type="PackedScene" uid="uid://byjgkfayp3ojq" path="res://Assets/Scenes/Interactables/movable_box.tscn" id="1_qwxgv"]
 [ext_resource type="PackedScene" uid="uid://tced2gfbrgy" path="res://Assets/Scenes/Interactables/box_button.tscn" id="2_vg8cf"]
 [ext_resource type="Script" path="res://Assets/Scripts/AnimatedInteractable.gd" id="3_tvqtr"]
@@ -8,6 +9,9 @@
 [ext_resource type="Script" path="res://Assets/Scripts/PathPlatform.gd" id="5_ukc6s"]
 [ext_resource type="PackedScene" uid="uid://dhpld6lq8p3ar" path="res://Assets/Scenes/Interactables/light_detector.tscn" id="7_b2ch0"]
 [ext_resource type="PackedScene" uid="uid://boaoprrmj0bql" path="res://Assets/Scenes/Interactables/door_activatable.tscn" id="8_nkfya"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_37lur"]
+size = Vector3(1, 0.2, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_kien2"]
 size = Vector3(22, 1, 22)
@@ -119,6 +123,13 @@ _data = {
 
 [node name="TestLevel" type="Node3D"]
 
+[node name="AreaCheckpoint" parent="." instance=ExtResource("1_l776b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AreaCheckpoint"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+shape = SubResource("BoxShape3D_37lur")
+
 [node name="Ground" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 4)
 
@@ -222,5 +233,3 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4.5053
 [connection signal="deactivated" from="BoxButton" to="Door" method="deactivate"]
 [connection signal="activated" from="LightDetector" to="MovingPlatform" method="activate"]
 [connection signal="deactivated" from="LightDetector" to="MovingPlatform" method="deactivate"]
-
-[editable path="Door"]

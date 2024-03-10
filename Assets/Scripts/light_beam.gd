@@ -18,7 +18,7 @@ func _physics_process(_delta):
 		set_beam_length(dist)
 		
 		var hit_node: Node3D = raycast.get_collider()
-		if hit_node.has_method("hit_with_light"):
+		if hit_node and hit_node.has_method("hit_with_light"):
 			hit_node.hit_with_light()
 	else:
 		set_beam_length(length)

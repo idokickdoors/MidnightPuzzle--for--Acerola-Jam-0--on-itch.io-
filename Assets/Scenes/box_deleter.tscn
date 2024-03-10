@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://Assets/Scripts/BoxDeleter.gd" id="1_rpdbf"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g6qkf"]
+size = Vector3(1000, 1, 1000)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_765el"]
 transparency = 1
@@ -10,6 +11,7 @@ albedo_color = Color(0.921569, 0.0431373, 0.243137, 0.811765)
 
 [sub_resource type="BoxMesh" id="BoxMesh_cff2y"]
 material = SubResource("StandardMaterial3D_765el")
+size = Vector3(1000, 1, 1000)
 
 [node name="BoxDeleter" type="Area3D"]
 script = ExtResource("1_rpdbf")

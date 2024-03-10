@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://b27i842ghgjfc"]
+[gd_scene load_steps=9 format=3 uid="uid://b27i842ghgjfc"]
 
-[ext_resource type="Script" path="res://Assets/Scripts/ingame_menu.gd" id="1_jn8a3"]
+[ext_resource type="Script" path="res://Assets/Scripts/UI/ingame_menu.gd" id="1_odheb"]
 [ext_resource type="FontFile" uid="uid://lc1i7fauw8tj" path="res://Fonts/Roboto Mono/RobotoMono-Bold.ttf" id="1_ull75"]
-[ext_resource type="Script" path="res://Assets/Scripts/ExitButton.gd" id="3_n1lca"]
+[ext_resource type="Script" path="res://Assets/Scripts/UI/ExitButton.gd" id="3_54h5v"]
+[ext_resource type="Script" path="res://Assets/Scripts/UI/reload_level.gd" id="4_ag2sy"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dv8xm"]
 bg_color = Color(0.129412, 0.137255, 0.12549, 1)
@@ -28,7 +29,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_jn8a3")
+script = ExtResource("1_odheb")
 
 [node name="FullscreenBox" type="Panel" parent="."]
 layout_mode = 2
@@ -276,22 +277,52 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -121.0
+offset_left = 176.0
 offset_top = 276.0
-offset_right = 121.0
+offset_right = 418.0
 offset_bottom = 344.0
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(121, 34)
+pivot_offset = Vector2(242, 34)
 theme_override_fonts/font = ExtResource("1_ull75")
 theme_override_font_sizes/font_size = 44
 text = "Quit Game"
-script = ExtResource("3_n1lca")
+script = ExtResource("3_54h5v")
 
 [node name="HoldTimer" type="Timer" parent="ExitButton"]
 wait_time = 2.0
 
 [node name="ProgressBar" type="ProgressBar" parent="ExitButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/background = SubResource("StyleBoxFlat_ecl6v")
+max_value = 1.0
+show_percentage = false
+
+[node name="ReloadButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 420.0
+offset_top = 276.0
+offset_right = 1026.0
+offset_bottom = 344.0
+grow_vertical = 2
+pivot_offset = Vector2(121, 34)
+theme_override_fonts/font = ExtResource("1_ull75")
+theme_override_font_sizes/font_size = 44
+text = "Restart from checkpoint"
+script = ExtResource("4_ag2sy")
+
+[node name="HoldTimer" type="Timer" parent="ReloadButton"]
+
+[node name="ProgressBar" type="ProgressBar" parent="ReloadButton"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -312,3 +343,6 @@ show_percentage = false
 [connection signal="button_down" from="ExitButton" to="ExitButton" method="_on_button_down"]
 [connection signal="button_up" from="ExitButton" to="ExitButton" method="_on_button_up"]
 [connection signal="timeout" from="ExitButton/HoldTimer" to="ExitButton" method="_on_hold_timer_timeout"]
+[connection signal="button_down" from="ReloadButton" to="ReloadButton" method="_on_button_down"]
+[connection signal="button_up" from="ReloadButton" to="ReloadButton" method="_on_button_up"]
+[connection signal="timeout" from="ReloadButton/HoldTimer" to="ReloadButton" method="on_reload_pressed"]

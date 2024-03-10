@@ -1,0 +1,30 @@
+[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://u7ocmoroqw1i"]
+
+[ext_resource type="Shader" path="res://Assets/Shaders/Grass/grass_blade2.gdshader" id="1_jqshm"]
+
+[sub_resource type="Gradient" id="Gradient_wj2ty"]
+colors = PackedColorArray(0.664501, 0.751738, 0.441155, 1, 0.207732, 0.577052, 0.140217, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_sjffw"]
+gradient = SubResource("Gradient_wj2ty")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_8e048"]
+frequency = 0.0441
+fractal_type = 0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_em6m3"]
+generate_mipmaps = false
+seamless = true
+seamless_blend_skirt = 1.0
+noise = SubResource("FastNoiseLite_8e048")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_jqshm")
+shader_parameter/distort_strength = 0.071
+shader_parameter/distort_stretch = 0.307
+shader_parameter/wind_speed = 0.005
+shader_parameter/wind_force = Vector3(1, 0, 1)
+shader_parameter/wind_texture_scale = 0.005
+shader_parameter/wind_texture = SubResource("NoiseTexture2D_em6m3")
+shader_parameter/grass_colour_ramp = SubResource("GradientTexture1D_sjffw")

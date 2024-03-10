@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmfu5fk863lnm"]
+
+[ext_resource type="PrismMesh" uid="uid://dheereckxdv3x" path="res://Assets/Shaders/Grass/grass_blade2.tres" id="1_b77t5"]
+
+[node name="GrassBlade" type="MeshInstance3D"]
+mesh = ExtResource("1_b77t5")

@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://crrx56vtn5plu"]
+
+[ext_resource type="Texture2D" uid="uid://cidk6b0nmpuyv" path="res://Assets/Textures/SoftBlueDots.png" id="1_0wcj5"]
+
+[resource]
+albedo_texture = ExtResource("1_0wcj5")
+uv1_scale = Vector3(2.42, 2.42, 2.42)
+uv1_triplanar = true

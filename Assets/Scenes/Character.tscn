@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://bv4l75ridtjmv"]
+[gd_scene load_steps=15 format=3 uid="uid://bv4l75ridtjmv"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/Character.gd" id="1_8kukp"]
+[ext_resource type="PackedScene" uid="uid://b27i842ghgjfc" path="res://Assets/Scenes/UI/ingame_menu.tscn" id="2_2nlkq"]
 [ext_resource type="Script" path="res://Assets/Scripts/Camera.gd" id="2_8e3e5"]
 [ext_resource type="Script" path="res://Assets/Scripts/BoxGrabber.gd" id="3_ttied"]
 [ext_resource type="AudioStream" uid="uid://d21w5l4pgq8lj" path="res://Sounds/Footsteps/FootStep_01.ogg" id="4_cjptg"]
@@ -50,12 +51,15 @@ stream_1/weight = 1.0
 stream_2/stream = ExtResource("6_ca3kr")
 stream_2/weight = 1.0
 
-[node name="Character" type="CharacterBody3D"]
+[node name="Character" type="CharacterBody3D" groups=["Character"]]
 floor_constant_speed = true
 floor_max_angle = 1.18682
 floor_snap_length = 0.34
 platform_on_leave = 2
 script = ExtResource("1_8kukp")
+
+[node name="IngameMenu" parent="." instance=ExtResource("2_2nlkq")]
+visible = false
 
 [node name="Camera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)

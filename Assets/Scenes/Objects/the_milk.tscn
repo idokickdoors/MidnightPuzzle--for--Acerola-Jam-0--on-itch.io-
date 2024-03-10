@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dyapnmasvfsah"]
+
+[ext_resource type="PackedScene" uid="uid://c7kjt26yaw84e" path="res://Assets/3dModels/MilkBox/MilkBox.glb" id="1_n01uy"]
+
+[node name="TheMilk" instance=ExtResource("1_n01uy")]
+
+[node name="MilkBox" parent="." index="0"]
+transform = Transform3D(0.18, 0, 0, 0, 0.18, 0, 0, 0, 0.18, 0, 0, 0)
