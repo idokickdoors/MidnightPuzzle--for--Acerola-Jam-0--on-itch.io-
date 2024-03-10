@@ -1,0 +1,42 @@
+[gd_scene load_steps=9 format=3 uid="uid://c2oy8p27j42x0"]
+
+[ext_resource type="Environment" uid="uid://b8vsfrc48mcs2" path="res://Assets/gameworld_environment.tres" id="1_iblqy"]
+[ext_resource type="PackedScene" uid="uid://valy0k08o0mt" path="res://Assets/Scenes/Levels/test_level.tscn" id="1_st5ji"]
+[ext_resource type="PackedScene" uid="uid://b27i842ghgjfc" path="res://Assets/Scenes/UI/ingame_menu.tscn" id="2_hpkna"]
+[ext_resource type="PackedScene" uid="uid://bv4l75ridtjmv" path="res://Assets/Scenes/Character.tscn" id="2_vfuwr"]
+[ext_resource type="PackedScene" uid="uid://ghguuhv7km7q" path="res://Assets/Scenes/Levels/level_01.tscn" id="3_bh1vy"]
+[ext_resource type="PackedScene" uid="uid://busmggw148t3t" path="res://Assets/Scenes/box_deleter.tscn" id="4_2t1qy"]
+[ext_resource type="PackedScene" uid="uid://ckso3012kq8m8" path="res://Assets/Scenes/Levels/level_03.tscn" id="6_8iorb"]
+[ext_resource type="PackedScene" uid="uid://5djq8r0sij5n" path="res://Assets/Scenes/Levels/level_02.tscn" id="6_rn1uy"]
+
+[node name="Game" type="Node"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("1_iblqy")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.999861, 0.00617585, 0.0154995, -0.0146166, -0.123733, 0.992208, 0.00804552, -0.992296, -0.123625, 0, 0, 0)
+light_energy = 0.36
+shadow_enabled = true
+shadow_blur = 0.293
+directional_shadow_mode = 0
+
+[node name="IngameMenu" parent="." instance=ExtResource("2_hpkna")]
+visible = false
+
+[node name="TestLevel" parent="." instance=ExtResource("1_st5ji")]
+
+[node name="Character" parent="." instance=ExtResource("2_vfuwr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.9099, 0)
+
+[node name="Level_01" parent="." instance=ExtResource("3_bh1vy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 0)
+
+[node name="Level_02" parent="." instance=ExtResource("6_rn1uy")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -30.5, 7.5, 0.55)
+
+[node name="Level_03" parent="." instance=ExtResource("6_8iorb")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -31.5, 9.5, 16.5)
+
+[node name="BoxDeleter" parent="." instance=ExtResource("4_2t1qy")]
+transform = Transform3D(400, 0, 0, 0, 1, 0, 0, 0, 400, 0, -10, 0)

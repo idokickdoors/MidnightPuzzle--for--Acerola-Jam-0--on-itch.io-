@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://busmggw148t3t"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/BoxDeleter.gd" id="1_rpdbf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g6qkf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_765el"]
+transparency = 1
+albedo_color = Color(0.921569, 0.0431373, 0.243137, 0.811765)
+
+[sub_resource type="BoxMesh" id="BoxMesh_cff2y"]
+material = SubResource("StandardMaterial3D_765el")
+
+[node name="BoxDeleter" type="Area3D"]
+script = ExtResource("1_rpdbf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_g6qkf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_cff2y")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

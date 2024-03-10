@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://ghguuhv7km7q"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/BoxSpawner.gd" id="1_bhynl"]
+[ext_resource type="Script" path="res://Assets/Scripts/BoxDeleter.gd" id="2_4xcq0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g6qkf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_765el"]
+transparency = 1
+albedo_color = Color(0.921569, 0.0431373, 0.243137, 0.811765)
+
+[sub_resource type="BoxMesh" id="BoxMesh_cff2y"]
+material = SubResource("StandardMaterial3D_765el")
+
+[node name="Level_01" type="Node3D"]
+
+[node name="Environment" type="Node3D" parent="."]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Environment"]
+use_collision = true
+size = Vector3(22, 1, 22)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1.5, 0)
+use_collision = true
+size = Vector3(1, 2, 1)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1, 0)
+use_collision = true
+
+[node name="BoxSpawner" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, 0)
+script = ExtResource("1_bhynl")
+
+[node name="Marker3D" type="Marker3D" parent="BoxSpawner"]
+
+[node name="BoxDeleter" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, 4)
+script = ExtResource("2_4xcq0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BoxDeleter"]
+shape = SubResource("BoxShape3D_g6qkf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BoxDeleter"]
+mesh = SubResource("BoxMesh_cff2y")
+
+[connection signal="body_entered" from="BoxDeleter" to="BoxDeleter" method="_on_body_entered"]

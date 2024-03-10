@@ -1,0 +1,39 @@
+[gd_resource type="ShaderMaterial" load_steps=8 format=3 uid="uid://brnafjns122np"]
+
+[ext_resource type="Shader" uid="uid://csidvjf2i2413" path="res://Assets/Shaders/WaterWiggle.tres" id="1_bai14"]
+[ext_resource type="Texture2D" uid="uid://cjld2cnah6pl0" path="res://Assets/Textures/Water/Water.png" id="1_c82f1"]
+[ext_resource type="Texture2D" uid="uid://cahukjdqrjikt" path="res://Assets/Textures/Water/WaterNormal.png" id="2_ay42q"]
+[ext_resource type="Texture2D" uid="uid://cktox3k3lkn44" path="res://Assets/Textures/Water/WaterHeight.png" id="3_lpnjg"]
+
+[sub_resource type="Gradient" id="Gradient_itv50"]
+colors = PackedColorArray(0, 0, 0, 1, 0.169245, 0.169245, 0.169245, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_gntdw"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_5brua"]
+color_ramp = SubResource("Gradient_itv50")
+noise = SubResource("FastNoiseLite_gntdw")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_bai14")
+shader_parameter/albedo = Color(1, 1, 1, 0.839216)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.1
+shader_parameter/metallic_texture_channel = null
+shader_parameter/specular = 0.88
+shader_parameter/metallic = 0.4
+shader_parameter/refraction = 0.09
+shader_parameter/refraction_texture_channel = null
+shader_parameter/normal_scale = 0.65
+shader_parameter/uv1_blend_sharpness = 1.0
+shader_parameter/uv1_scale = Vector3(1.8, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/wave_scale = Vector2(1, 0.4)
+shader_parameter/wave_speed = Vector2(0, 0.2)
+shader_parameter/texture_albedo = ExtResource("1_c82f1")
+shader_parameter/texture_refraction = ExtResource("3_lpnjg")
+shader_parameter/texture_normal = ExtResource("2_ay42q")
+shader_parameter/wave_noise = SubResource("NoiseTexture2D_5brua")

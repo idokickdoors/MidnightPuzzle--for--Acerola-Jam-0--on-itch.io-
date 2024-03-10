@@ -1,0 +1,12 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bp2bs7614armj"]
+
+[ext_resource type="Shader" path="res://Assets/Shaders/LightBeamShader.gdshader" id="1_k5if0"]
+
+[resource]
+resource_local_to_scene = true
+shader = ExtResource("1_k5if0")
+shader_parameter/density = 1.0
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/emission = Color(1, 1, 1, 1)
+shader_parameter/height_falloff = 0.0
+shader_parameter/edge_fade = 1e-05

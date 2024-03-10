@@ -1,0 +1,16 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://bb4r5wvpriif4"]
+
+[ext_resource type="Texture2D" uid="uid://c166xfh4tnvlh" path="res://Assets/Textures/WoodPlank/WoodPlankAlbedo.png" id="1_5go0w"]
+[ext_resource type="Texture2D" uid="uid://bvau844tc3gdi" path="res://Assets/Textures/WoodPlank/WoodPlankNormal.png" id="2_ylvqc"]
+[ext_resource type="Texture2D" uid="uid://c7kfivryqfvt0" path="res://Assets/Textures/WoodPlank/WoodPlankRoughness.png" id="3_4u3b6"]
+
+[resource]
+albedo_texture = ExtResource("1_5go0w")
+metallic_specular = 0.29
+roughness_texture = ExtResource("3_4u3b6")
+normal_enabled = true
+normal_scale = 3.67
+normal_texture = ExtResource("2_ylvqc")
+uv1_scale = Vector3(0.6, 0.6, 0.6)
+uv1_triplanar = true
+uv1_world_triplanar = true

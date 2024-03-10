@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwpfqtf3bxbh4"]
+
+[ext_resource type="PackedScene" uid="uid://i0jblh8qbmor" path="res://Assets/3dModels/Door/Door.glb" id="1_lrfia"]
+[ext_resource type="Material" uid="uid://ckcqo14ne0nc0" path="res://Assets/Materials/RealishWood.tres" id="2_os3jw"]
+
+[node name="Door" instance=ExtResource("1_lrfia")]
+
+[node name="Door" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_os3jw")

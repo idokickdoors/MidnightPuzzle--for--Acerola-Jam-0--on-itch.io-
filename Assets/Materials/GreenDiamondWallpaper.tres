@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bt2i703qbg1dd"]
+
+[ext_resource type="Texture2D" uid="uid://dj4mjw5j3kbxb" path="res://Assets/Textures/GreenDiamondWallpapaAlbedo.png" id="1_esmkj"]
+
+[resource]
+albedo_texture = ExtResource("1_esmkj")
+metallic_specular = 0.57
+roughness = 0.47
+uv1_scale = Vector3(3, 3, 3)
+uv1_triplanar = true
+uv1_world_triplanar = true

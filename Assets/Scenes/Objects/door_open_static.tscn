@@ -1,0 +1,66 @@
+[gd_scene load_steps=9 format=3 uid="uid://y2fercihb0oo"]
+
+[ext_resource type="PackedScene" uid="uid://cwpfqtf3bxbh4" path="res://Assets/3dModels/Door/editable_door.tscn" id="1_gaqnk"]
+[ext_resource type="PackedScene" uid="uid://c1fns26mwt72q" path="res://Assets/3dModels/Door/editable_door_handle.tscn" id="2_jnojm"]
+[ext_resource type="PackedScene" uid="uid://cr5j1hat7ub7k" path="res://Assets/3dModels/Door/editable_door_handle_ring.tscn" id="3_a4gio"]
+[ext_resource type="Material" uid="uid://dtlvb0oikgk76" path="res://Assets/Materials/White_Walltrim.tres" id="4_umtpb"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_n15yj"]
+material = ExtResource("4_umtpb")
+size = Vector3(0.15, 2.2, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1eir3"]
+size = Vector3(0.15, 2.2, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_lpa4u"]
+material = ExtResource("4_umtpb")
+size = Vector3(1.5, 0.15, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i41w0"]
+size = Vector3(1.5, 0.15, 0.1)
+
+[node name="DoorOpenStatic" type="Node3D"]
+
+[node name="DoorModel" type="Node3D" parent="."]
+transform = Transform3D(-0.0191939, 0, 0.249816, 0, 0.5, 0, -0.499631, 0, -0.00959695, -0.6, 1.1, 0)
+
+[node name="Door" parent="DoorModel" instance=ExtResource("1_gaqnk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2, 0, 0)
+
+[node name="DoorHandle" parent="DoorModel" instance=ExtResource("2_jnojm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.5, 2.268, 0, 0)
+
+[node name="DoorHandleRing" parent="DoorModel" instance=ExtResource("3_a4gio")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.1, 1.2, 0, 0)
+
+[node name="DoorFrame" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="DoorFrame"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.675, 0, 0)
+mesh = SubResource("BoxMesh_n15yj")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="DoorFrame/MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DoorFrame/MeshInstance3D/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.96046e-08, 0, 0)
+shape = SubResource("BoxShape3D_1eir3")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="DoorFrame"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.675, 0, 0)
+mesh = SubResource("BoxMesh_n15yj")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="DoorFrame/MeshInstance3D2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DoorFrame/MeshInstance3D2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.96046e-08, 0, 0)
+shape = SubResource("BoxShape3D_1eir3")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="DoorFrame"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.175, 0)
+mesh = SubResource("BoxMesh_lpa4u")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="DoorFrame/MeshInstance3D3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DoorFrame/MeshInstance3D3/StaticBody3D"]
+shape = SubResource("BoxShape3D_i41w0")

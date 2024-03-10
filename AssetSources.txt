@@ -1,0 +1,8 @@
+Fonts:
+	Roboto Mono (https://fonts.google.com/specimen/Roboto+Mono)
+
+Sounds:
+	Footsteps (https://freesound.org/people/SpliceSound/sounds/369838/)
+	WaterStream (https://freesound.org/people/s-light/sounds/514683/)
+	CardboardBox (https://freesound.org/people/BenDrain/sounds/487846/)
+	Door (https://freesound.org/people/kyles/sounds/451830/)

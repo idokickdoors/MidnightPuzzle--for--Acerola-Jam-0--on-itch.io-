@@ -1,0 +1,314 @@
+[gd_scene load_steps=8 format=3 uid="uid://b27i842ghgjfc"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/ingame_menu.gd" id="1_jn8a3"]
+[ext_resource type="FontFile" uid="uid://lc1i7fauw8tj" path="res://Fonts/Roboto Mono/RobotoMono-Bold.ttf" id="1_ull75"]
+[ext_resource type="Script" path="res://Assets/Scripts/ExitButton.gd" id="3_n1lca"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dv8xm"]
+bg_color = Color(0.129412, 0.137255, 0.12549, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_vwq6l"]
+font = ExtResource("1_ull75")
+font_size = 22
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ws8g"]
+bg_color = Color(0.545098, 0.545098, 0.545098, 1)
+border_width_top = 2
+border_width_bottom = 2
+border_color = Color(0.545098, 0.545098, 0.545098, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ecl6v"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="IngameMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jn8a3")
+
+[node name="FullscreenBox" type="Panel" parent="."]
+layout_mode = 2
+offset_left = 420.0
+offset_top = 428.0
+offset_right = 670.0
+offset_bottom = 450.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_dv8xm")
+
+[node name="Button" type="Button" parent="FullscreenBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -4.5
+offset_bottom = 4.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "
+"
+
+[node name="Label" type="Label" parent="FullscreenBox"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -15.0
+offset_right = 200.0
+offset_bottom = 15.0
+grow_vertical = 2
+text = "Fullscreen"
+label_settings = SubResource("LabelSettings_vwq6l")
+
+[node name="TickLabel" type="Label" parent="FullscreenBox"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -15.0
+offset_bottom = 15.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "X"
+label_settings = SubResource("LabelSettings_vwq6l")
+
+[node name="MasterVolumeBox" type="Panel" parent="."]
+layout_mode = 2
+offset_left = 420.0
+offset_top = 503.0
+offset_right = 1420.0
+offset_bottom = 525.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_dv8xm")
+
+[node name="Slider" type="HSlider" parent="MasterVolumeBox"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -700.0
+offset_top = -11.0
+offset_bottom = 11.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/slider = SubResource("StyleBoxFlat_4ws8g")
+max_value = 1.0
+step = 0.01
+
+[node name="Label" type="Label" parent="MasterVolumeBox"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -15.0
+offset_right = 221.0
+offset_bottom = 15.0
+grow_vertical = 2
+text = "Master Volume"
+label_settings = SubResource("LabelSettings_vwq6l")
+
+[node name="MouseSensYBox" type="Panel" parent="."]
+layout_mode = 2
+offset_left = 420.0
+offset_top = 540.0
+offset_right = 1420.0
+offset_bottom = 562.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_dv8xm")
+
+[node name="Slider" type="HSlider" parent="MouseSensYBox"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -700.0
+offset_top = -11.0
+offset_bottom = 11.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/slider = SubResource("StyleBoxFlat_4ws8g")
+min_value = 0.1
+max_value = 10.0
+step = 0.01
+value = 1.0
+exp_edit = true
+
+[node name="Label" type="Label" parent="MouseSensYBox"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -15.0
+offset_right = 221.0
+offset_bottom = 15.0
+grow_vertical = 2
+text = "Mouse Sensitivity Y"
+label_settings = SubResource("LabelSettings_vwq6l")
+
+[node name="MouseSensXBox" type="Panel" parent="."]
+layout_mode = 2
+offset_left = 420.0
+offset_top = 562.0
+offset_right = 1420.0
+offset_bottom = 584.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_dv8xm")
+
+[node name="Slider" type="HSlider" parent="MouseSensXBox"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -700.0
+offset_top = -11.0
+offset_bottom = 11.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/slider = SubResource("StyleBoxFlat_4ws8g")
+min_value = 0.1
+max_value = 10.0
+step = 0.01
+value = 1.0
+exp_edit = true
+
+[node name="Label" type="Label" parent="MouseSensXBox"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -15.0
+offset_right = 221.0
+offset_bottom = 15.0
+grow_vertical = 2
+text = "Mouse Sensitivity X"
+label_settings = SubResource("LabelSettings_vwq6l")
+
+[node name="GamepadSensYBox" type="Panel" parent="."]
+layout_mode = 2
+offset_left = 420.0
+offset_top = 589.0
+offset_right = 1420.0
+offset_bottom = 611.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_dv8xm")
+
+[node name="Slider" type="HSlider" parent="GamepadSensYBox"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -700.0
+offset_top = -11.0
+offset_bottom = 11.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/slider = SubResource("StyleBoxFlat_4ws8g")
+min_value = 1.0
+max_value = 24.0
+step = 0.01
+value = 1.0
+exp_edit = true
+
+[node name="Label" type="Label" parent="GamepadSensYBox"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -15.0
+offset_right = 221.0
+offset_bottom = 15.0
+grow_vertical = 2
+text = "Gamepad Sensitivity Y"
+label_settings = SubResource("LabelSettings_vwq6l")
+
+[node name="GamepadSensXBox" type="Panel" parent="."]
+layout_mode = 2
+offset_left = 420.0
+offset_top = 611.0
+offset_right = 1420.0
+offset_bottom = 633.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_dv8xm")
+
+[node name="Slider" type="HSlider" parent="GamepadSensXBox"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -700.0
+offset_top = -11.0
+offset_bottom = 11.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/slider = SubResource("StyleBoxFlat_4ws8g")
+min_value = 1.0
+max_value = 24.0
+step = 0.01
+value = 1.0
+exp_edit = true
+
+[node name="Label" type="Label" parent="GamepadSensXBox"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -15.0
+offset_right = 221.0
+offset_bottom = 15.0
+grow_vertical = 2
+text = "Gamepad Sensitivity X"
+label_settings = SubResource("LabelSettings_vwq6l")
+
+[node name="ExitButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -121.0
+offset_top = 276.0
+offset_right = 121.0
+offset_bottom = 344.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(121, 34)
+theme_override_fonts/font = ExtResource("1_ull75")
+theme_override_font_sizes/font_size = 44
+text = "Quit Game"
+script = ExtResource("3_n1lca")
+
+[node name="HoldTimer" type="Timer" parent="ExitButton"]
+wait_time = 2.0
+
+[node name="ProgressBar" type="ProgressBar" parent="ExitButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/background = SubResource("StyleBoxFlat_ecl6v")
+max_value = 1.0
+show_percentage = false
+
+[connection signal="pressed" from="FullscreenBox/Button" to="." method="_on_fullscreen_pressed"]
+[connection signal="value_changed" from="MasterVolumeBox/Slider" to="." method="_on_master_volume_changed"]
+[connection signal="value_changed" from="MouseSensYBox/Slider" to="." method="_on_mouse_sens_y_changed"]
+[connection signal="value_changed" from="MouseSensXBox/Slider" to="." method="_on_mouse_sens_x_changed"]
+[connection signal="value_changed" from="GamepadSensYBox/Slider" to="." method="_on_gamepad_sens_y_changed"]
+[connection signal="value_changed" from="GamepadSensXBox/Slider" to="." method="_on_gamepad_sens_x_changed"]
+[connection signal="button_down" from="ExitButton" to="ExitButton" method="_on_button_down"]
+[connection signal="button_up" from="ExitButton" to="ExitButton" method="_on_button_up"]
+[connection signal="timeout" from="ExitButton/HoldTimer" to="ExitButton" method="_on_hold_timer_timeout"]

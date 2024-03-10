@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1fns26mwt72q"]
+
+[ext_resource type="PackedScene" uid="uid://c2k8ku8f7ax6e" path="res://Assets/3dModels/Door/DoorHandle.glb" id="1_qn6tx"]
+[ext_resource type="Material" uid="uid://dcv2iepys7y3b" path="res://Assets/Materials/Metalic_Smooth.tres" id="2_7vgfv"]
+
+[node name="DoorHandle" instance=ExtResource("1_qn6tx")]
+
+[node name="Handle" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_7vgfv")

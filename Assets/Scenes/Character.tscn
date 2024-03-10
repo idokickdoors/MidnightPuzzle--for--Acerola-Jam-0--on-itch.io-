@@ -1,0 +1,111 @@
+[gd_scene load_steps=14 format=3 uid="uid://bv4l75ridtjmv"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/Character.gd" id="1_8kukp"]
+[ext_resource type="Script" path="res://Assets/Scripts/Camera.gd" id="2_8e3e5"]
+[ext_resource type="Script" path="res://Assets/Scripts/BoxGrabber.gd" id="3_ttied"]
+[ext_resource type="AudioStream" uid="uid://d21w5l4pgq8lj" path="res://Sounds/Footsteps/FootStep_01.ogg" id="4_cjptg"]
+[ext_resource type="AudioStream" uid="uid://dijnhtc7wqew4" path="res://Sounds/Footsteps/FootStep_02.ogg" id="5_riyss"]
+[ext_resource type="AudioStream" uid="uid://nskrujfqogfm" path="res://Sounds/Footsteps/FootStep_03.ogg" id="6_ca3kr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xj31t"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_color = Color(0, 0, 0, 0)
+
+[sub_resource type="Gradient" id="Gradient_ne24h"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.396104, 0.62987, 0.811688)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ps54e"]
+gradient = SubResource("Gradient_ne24h")
+width = 16
+height = 16
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5hm03"]
+albedo_color = Color(0, 0, 0, 1)
+metallic_specular = 0.64
+roughness = 0.43
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ibq23"]
+material = SubResource("StandardMaterial3D_5hm03")
+radius = 0.4
+height = 1.9
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_w6a14"]
+radius = 0.4
+height = 1.9
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_lc0ri"]
+streams_count = 3
+stream_0/stream = ExtResource("4_cjptg")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("5_riyss")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("6_ca3kr")
+stream_2/weight = 1.0
+
+[node name="Character" type="CharacterBody3D"]
+floor_constant_speed = true
+floor_max_angle = 1.18682
+floor_snap_length = 0.34
+platform_on_leave = 2
+script = ExtResource("1_8kukp")
+
+[node name="Camera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+script = ExtResource("2_8e3e5")
+
+[node name="BoxGrabber" type="Node" parent="Camera"]
+script = ExtResource("3_ttied")
+
+[node name="CameraRay" type="RayCast3D" parent="Camera"]
+target_position = Vector3(0, 0, -3)
+
+[node name="NeutralCrosshair" type="Panel" parent="Camera"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -6.0
+offset_top = -6.0
+offset_right = 6.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_xj31t")
+
+[node name="HoldingCrosshair" type="TextureRect" parent="Camera"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_ps54e")
+
+[node name="Bean" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_ibq23")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_w6a14")
+
+[node name="Footsteps" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.8, 0)
+stream = SubResource("AudioStreamRandomizer_lc0ri")
+volume_db = -20.0
