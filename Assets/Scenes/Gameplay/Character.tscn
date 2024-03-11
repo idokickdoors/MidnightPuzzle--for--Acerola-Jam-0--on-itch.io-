@@ -1,9 +1,9 @@
 [gd_scene load_steps=15 format=3 uid="uid://bv4l75ridtjmv"]
 
-[ext_resource type="Script" path="res://Assets/Scripts/Character.gd" id="1_8kukp"]
+[ext_resource type="Script" path="res://Assets/Scripts/Gameplay/Character.gd" id="1_8kukp"]
 [ext_resource type="PackedScene" uid="uid://b27i842ghgjfc" path="res://Assets/Scenes/UI/ingame_menu.tscn" id="2_2nlkq"]
-[ext_resource type="Script" path="res://Assets/Scripts/Camera.gd" id="2_8e3e5"]
-[ext_resource type="Script" path="res://Assets/Scripts/BoxGrabber.gd" id="3_ttied"]
+[ext_resource type="Script" path="res://Assets/Scripts/Gameplay/Camera.gd" id="2_8e3e5"]
+[ext_resource type="Script" path="res://Assets/Scripts/Gameplay/BoxGrabber.gd" id="3_ttied"]
 [ext_resource type="AudioStream" uid="uid://d21w5l4pgq8lj" path="res://Sounds/Footsteps/FootStep_01.ogg" id="4_cjptg"]
 [ext_resource type="AudioStream" uid="uid://dijnhtc7wqew4" path="res://Sounds/Footsteps/FootStep_02.ogg" id="5_riyss"]
 [ext_resource type="AudioStream" uid="uid://nskrujfqogfm" path="res://Sounds/Footsteps/FootStep_03.ogg" id="6_ca3kr"]
@@ -63,6 +63,7 @@ visible = false
 
 [node name="Camera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+current = true
 script = ExtResource("2_8e3e5")
 
 [node name="BoxGrabber" type="Node" parent="Camera"]

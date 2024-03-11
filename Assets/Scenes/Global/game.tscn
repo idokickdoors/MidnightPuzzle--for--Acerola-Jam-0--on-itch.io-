@@ -1,0 +1,47 @@
+[gd_scene load_steps=10 format=3 uid="uid://c2oy8p27j42x0"]
+
+[ext_resource type="Environment" uid="uid://b8vsfrc48mcs2" path="res://Assets/gameworld_environment.tres" id="1_s6h25"]
+[ext_resource type="PackedScene" uid="uid://bv4l75ridtjmv" path="res://Assets/Scenes/Gameplay/Character.tscn" id="2_7vsox"]
+[ext_resource type="PackedScene" uid="uid://cxbll2e0wpuiy" path="res://Assets/Scenes/Levels/bedroom.tscn" id="3_hnhje"]
+[ext_resource type="PackedScene" uid="uid://ghguuhv7km7q" path="res://Assets/Scenes/Levels/level_01.tscn" id="4_f80rw"]
+[ext_resource type="PackedScene" uid="uid://5djq8r0sij5n" path="res://Assets/Scenes/Levels/level_02.tscn" id="5_rtvcu"]
+[ext_resource type="PackedScene" uid="uid://ckso3012kq8m8" path="res://Assets/Scenes/Levels/level_03.tscn" id="6_xcc4m"]
+[ext_resource type="PackedScene" uid="uid://cehka0o27an8w" path="res://Assets/Scenes/Levels/level_04.tscn" id="7_566fo"]
+[ext_resource type="PackedScene" uid="uid://busmggw148t3t" path="res://Assets/Scenes/Gameplay/box_deleter.tscn" id="7_arhp4"]
+[ext_resource type="PackedScene" uid="uid://yqvjsjiqndsc" path="res://Assets/Scenes/Levels/kitchen.tscn" id="8_wxve1"]
+
+[node name="Game" type="Node"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("1_s6h25")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.999861, 0.00617585, 0.0154995, -0.0146166, -0.123733, 0.992208, 0.00804552, -0.992296, -0.123625, 0, 0, 0)
+light_energy = 0.36
+shadow_enabled = true
+shadow_blur = 0.293
+directional_shadow_mode = 0
+
+[node name="Character" parent="." instance=ExtResource("2_7vsox")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -11.3, 1.6099, 7.2)
+
+[node name="Bedroom" parent="." instance=ExtResource("3_hnhje")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -11.5, 0.5, 6.5)
+
+[node name="Level_01" parent="." instance=ExtResource("4_f80rw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 0)
+
+[node name="Level_02" parent="." instance=ExtResource("5_rtvcu")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -30.5, 7.5, 0.55)
+
+[node name="Level_03" parent="." instance=ExtResource("6_xcc4m")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -31.5, 9.5, 16.5)
+
+[node name="Level_04" parent="." instance=ExtResource("7_566fo")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -35.5, 13.5, 28.5)
+
+[node name="Kitchen" parent="." instance=ExtResource("8_wxve1")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -20.5, 14.5, 32.5026)
+
+[node name="BoxDeleter" parent="." instance=ExtResource("7_arhp4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)

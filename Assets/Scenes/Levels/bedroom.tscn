@@ -1,6 +1,6 @@
 [gd_scene load_steps=36 format=3 uid="uid://cxbll2e0wpuiy"]
 
-[ext_resource type="PackedScene" uid="uid://cx2wgco3sqmvd" path="res://Assets/Scenes/area_checkpoint.tscn" id="1_njypx"]
+[ext_resource type="PackedScene" uid="uid://cx2wgco3sqmvd" path="res://Assets/Scenes/Gameplay/area_checkpoint.tscn" id="1_njypx"]
 [ext_resource type="Material" uid="uid://ckcqo14ne0nc0" path="res://Assets/Materials/RealishWood.tres" id="1_yt6qq"]
 [ext_resource type="MeshLibrary" uid="uid://dcuuevkoxl1di" path="res://Assets/GridMapStuff/Wall_Tiles_Edge.tres" id="2_6kcms"]
 [ext_resource type="Material" uid="uid://crrx56vtn5plu" path="res://Assets/Materials/SoftBlueDots.tres" id="2_o473h"]

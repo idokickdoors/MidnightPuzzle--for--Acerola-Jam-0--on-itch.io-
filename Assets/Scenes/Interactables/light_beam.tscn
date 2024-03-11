@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://b1ypt43kdosia"]
 
-[ext_resource type="Script" path="res://Assets/Scripts/light_beam.gd" id="1_0appr"]
+[ext_resource type="Script" path="res://Assets/Scripts/Interactables/light_beam.gd" id="1_0appr"]
 [ext_resource type="Material" uid="uid://cvody71on3ogj" path="res://Assets/Shaders/LightBeamColour.tres" id="1_rub6q"]
 [ext_resource type="Material" uid="uid://bp2bs7614armj" path="res://Assets/Shaders/LightBeam.tres" id="2_xmppa"]
 [ext_resource type="Material" uid="uid://dcv2iepys7y3b" path="res://Assets/Materials/Metalic_Smooth.tres" id="4_l1h5c"]
@@ -33,13 +33,14 @@ distance_fade_max_distance = 8.0
 material = SubResource("StandardMaterial3D_7hukn")
 size = Vector2(1, 0.55)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n0jl3"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rbucw"]
 albedo_color = Color(0.439216, 0.34902, 0.905882, 1)
 emission_enabled = true
 emission = Color(0.380392, 0.266667, 0.835294, 1)
 emission_energy_multiplier = 1.7
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_v0w8v"]
+[sub_resource type="CylinderMesh" id="CylinderMesh_bpami"]
+material = SubResource("StandardMaterial3D_rbucw")
 top_radius = 0.45
 bottom_radius = 0.45
 height = 0.11
@@ -119,9 +120,8 @@ skeleton = NodePath("../..")
 
 [node name="LightDisc" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, -8.74228e-08, -8.74228e-08, 8.74228e-08, -4.37114e-08, 1, -8.74228e-08, -1, -4.37114e-08, 0, 0, 0.1)
-material_override = SubResource("StandardMaterial3D_n0jl3")
-mesh = SubResource("CylinderMesh_v0w8v")
-skeleton = NodePath("../CollisionShape3D")
+mesh = SubResource("CylinderMesh_bpami")
+skeleton = NodePath("")
 
 [node name="Body" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, 0, 0, 0.1)

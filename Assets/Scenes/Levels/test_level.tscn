@@ -1,14 +1,20 @@
-[gd_scene load_steps=27 format=3 uid="uid://valy0k08o0mt"]
+[gd_scene load_steps=33 format=3 uid="uid://valy0k08o0mt"]
 
-[ext_resource type="PackedScene" uid="uid://cx2wgco3sqmvd" path="res://Assets/Scenes/area_checkpoint.tscn" id="1_l776b"]
+[ext_resource type="Environment" uid="uid://b8vsfrc48mcs2" path="res://Assets/gameworld_environment.tres" id="1_481ff"]
+[ext_resource type="PackedScene" uid="uid://cx2wgco3sqmvd" path="res://Assets/Scenes/Gameplay/area_checkpoint.tscn" id="1_l776b"]
 [ext_resource type="PackedScene" uid="uid://byjgkfayp3ojq" path="res://Assets/Scenes/Interactables/movable_box.tscn" id="1_qwxgv"]
 [ext_resource type="PackedScene" uid="uid://tced2gfbrgy" path="res://Assets/Scenes/Interactables/box_button.tscn" id="2_vg8cf"]
-[ext_resource type="Script" path="res://Assets/Scripts/AnimatedInteractable.gd" id="3_tvqtr"]
+[ext_resource type="PackedScene" uid="uid://bv4l75ridtjmv" path="res://Assets/Scenes/Gameplay/Character.tscn" id="3_suh1k"]
+[ext_resource type="Script" path="res://Assets/Scripts/Interactables/AnimatedInteractable.gd" id="3_tvqtr"]
 [ext_resource type="Material" uid="uid://cwg64bqg7b5x6" path="res://Assets/Materials/Metal_Rough_Weathered.tres" id="4_37oer"]
-[ext_resource type="PackedScene" uid="uid://b1ypt43kdosia" path="res://Assets/Scenes/light_beam.tscn" id="5_pcvtg"]
-[ext_resource type="Script" path="res://Assets/Scripts/PathPlatform.gd" id="5_ukc6s"]
+[ext_resource type="PackedScene" uid="uid://b1ypt43kdosia" path="res://Assets/Scenes/Interactables/light_beam.tscn" id="5_pcvtg"]
+[ext_resource type="Script" path="res://Assets/Scripts/Interactables/PathPlatform.gd" id="5_ukc6s"]
 [ext_resource type="PackedScene" uid="uid://dhpld6lq8p3ar" path="res://Assets/Scenes/Interactables/light_detector.tscn" id="7_b2ch0"]
 [ext_resource type="PackedScene" uid="uid://boaoprrmj0bql" path="res://Assets/Scenes/Interactables/door_activatable.tscn" id="8_nkfya"]
+[ext_resource type="PackedScene" uid="uid://d577g6afu5xi" path="res://Assets/Scenes/Interactables/inhabited_box.tscn" id="11_3rsc3"]
+[ext_resource type="PackedScene" uid="uid://bffcqgxykq761" path="res://Assets/Scenes/Interactables/animated_fridge.tscn" id="13_p6dif"]
+[ext_resource type="MeshLibrary" uid="uid://dcuuevkoxl1di" path="res://Assets/GridMapStuff/Wall_Tiles_Edge.tres" id="14_wkhd0"]
+[ext_resource type="PackedScene" uid="uid://b62yunsymvvm8" path="res://Assets/Scenes/Interactables/downlight_togglable.tscn" id="15_10h5x"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_37lur"]
 size = Vector3(1, 0.2, 1)
@@ -123,12 +129,18 @@ _data = {
 
 [node name="TestLevel" type="Node3D"]
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("1_481ff")
+
 [node name="AreaCheckpoint" parent="." instance=ExtResource("1_l776b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 5)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AreaCheckpoint"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.1, 0)
 shape = SubResource("BoxShape3D_37lur")
+
+[node name="Character" parent="." instance=ExtResource("3_suh1k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 5)
 
 [node name="Ground" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 4)
@@ -225,11 +237,37 @@ transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 6, 3, -8
 [node name="Door" parent="." instance=ExtResource("8_nkfya")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4.50536, 0.5, 4.52613)
 
+[node name="InhabitedBox" parent="." instance=ExtResource("11_3rsc3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 1, -5)
+
+[node name="AnimatedFridge" parent="." instance=ExtResource("13_p6dif")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 1.5, 9)
+
+[node name="GridMap" type="GridMap" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -2)
+mesh_library = ExtResource("14_wkhd0")
+cell_size = Vector3(1, 1, 1)
+cell_center_y = false
+cell_center_z = false
+data = {
+"cells": PackedInt32Array(131062, 12, 1441812, 131062, 13, 1441812, 131062, 14, 1441812, 131059, 11, 1441801, 131059, 12, 1441801, 131059, 13, 1441801, 131059, 14, 1441801, 196595, 11, 1441801, 196595, 12, 1441801, 196595, 13, 1441801, 196595, 14, 1441801)
+}
+metadata/_editor_floor_ = Vector3(0, 1, 0)
+
+[node name="Downlight_togglable" parent="." instance=ExtResource("15_10h5x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 4, 4)
+
+[node name="Downlight_togglable2" parent="." instance=ExtResource("15_10h5x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 3, 7)
+
 [connection signal="activated" from="BoxButton" to="PathPlatform" method="activate"]
 [connection signal="activated" from="BoxButton" to="MovingWall" method="activate"]
 [connection signal="activated" from="BoxButton" to="Door" method="activate"]
+[connection signal="activated" from="BoxButton" to="Downlight_togglable" method="activate"]
 [connection signal="deactivated" from="BoxButton" to="PathPlatform" method="deactivate"]
 [connection signal="deactivated" from="BoxButton" to="MovingWall" method="deactivate"]
 [connection signal="deactivated" from="BoxButton" to="Door" method="deactivate"]
+[connection signal="deactivated" from="BoxButton" to="Downlight_togglable" method="deactivate"]
 [connection signal="activated" from="LightDetector" to="MovingPlatform" method="activate"]
 [connection signal="deactivated" from="LightDetector" to="MovingPlatform" method="deactivate"]
+[connection signal="trigger" from="AnimatedFridge" to="Downlight_togglable2" method="activate"]

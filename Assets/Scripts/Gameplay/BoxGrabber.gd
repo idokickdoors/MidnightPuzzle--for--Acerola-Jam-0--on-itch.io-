@@ -19,6 +19,7 @@ func pickup_box(box: RigidBody3D):
 	held_box.angular_velocity = Vector3.ZERO
 	character.add_collision_exception_with(held_box)
 	set_crosshair(true)
+	held_box.set_meta("Held", true)
 
 func drop_box():
 	for child in held_box.get_children(true):
@@ -26,6 +27,7 @@ func drop_box():
 			child.material_overlay = null
 	held_box.gravity_scale = 1
 	character.remove_collision_exception_with(held_box)
+	held_box.remove_meta("Held")
 	held_box = null
 	set_crosshair(false)
 

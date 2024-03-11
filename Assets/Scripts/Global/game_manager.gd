@@ -1,6 +1,6 @@
 extends Node
 
-const CHARACTER = preload("res://Assets/Scenes/Character.tscn")
+const CHARACTER = preload("res://Assets/Scenes/Gameplay/Character.tscn")
 
 var level_node
 var level_res_path

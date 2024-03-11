@@ -11,14 +11,14 @@ config_version=5
 [application]
 
 config/name="MidnightPuzzle"
-run/main_scene="res://Assets/Scenes/game.tscn"
+run/main_scene="res://Assets/Scenes/Global/game.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
-GameSettings="*res://Assets/Scenes/game_settings.tscn"
-GameManager="*res://Assets/Scenes/game_manager.tscn"
+GameSettings="*res://Assets/Scenes/Global/game_settings.tscn"
+GameManager="*res://Assets/Scenes/Global/game_manager.tscn"
 
 [display]
 

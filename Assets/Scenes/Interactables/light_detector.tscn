@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://dhpld6lq8p3ar"]
 
-[ext_resource type="Script" path="res://Assets/Scripts/LightDetector.gd" id="1_bchi4"]
+[ext_resource type="Script" path="res://Assets/Scripts/Interactables/LightDetector.gd" id="1_bchi4"]
 [ext_resource type="Material" uid="uid://bsa0csbf736mp" path="res://Assets/Materials/Button_Inactive.tres" id="2_e4gqw"]
 [ext_resource type="Material" uid="uid://dcv2iepys7y3b" path="res://Assets/Materials/Metalic_Smooth.tres" id="3_v3fye"]
 

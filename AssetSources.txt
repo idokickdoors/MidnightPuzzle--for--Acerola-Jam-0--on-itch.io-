@@ -6,3 +6,4 @@ Sounds:
 	WaterStream (https://freesound.org/people/s-light/sounds/514683/)
 	CardboardBox (https://freesound.org/people/BenDrain/sounds/487846/)
 	Door (https://freesound.org/people/kyles/sounds/451830/)
+	LightSwitch (https://freesound.org/people/aphom000/sounds/687108/)

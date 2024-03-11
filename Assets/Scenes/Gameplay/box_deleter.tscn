@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://busmggw148t3t"]
 
-[ext_resource type="Script" path="res://Assets/Scripts/BoxDeleter.gd" id="1_rpdbf"]
+[ext_resource type="Script" path="res://Assets/Scripts/Gameplay/BoxDeleter.gd" id="1_rpdbf"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g6qkf"]
 size = Vector3(1000, 1, 1000)

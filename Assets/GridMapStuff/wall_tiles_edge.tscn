@@ -779,7 +779,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -2)
 mesh = SubResource("ArrayMesh_wngcj")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="CupboardWithHole"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CupboardWithHole/StaticBody3D"]
 shape = SubResource("BoxShape3D_0rmn8")

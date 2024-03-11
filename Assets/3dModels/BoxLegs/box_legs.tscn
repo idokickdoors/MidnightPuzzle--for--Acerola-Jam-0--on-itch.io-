@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dujgbey2vag3h"]
+
+[ext_resource type="PackedScene" uid="uid://mnsmx84f3aad" path="res://Assets/3dModels/BoxLegs/BoxLegs.glb" id="1_nen2m"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ol0wg"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fxjov"]
+albedo_color = Color(0, 0, 0, 1)
+
+[node name="BoxLegs" instance=ExtResource("1_nen2m")]
+
+[node name="LowerLeg" parent="Armature/Skeleton3D" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ol0wg")
+
+[node name="UpperLeg" parent="Armature/Skeleton3D" index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_fxjov")

@@ -1,11 +1,11 @@
 [gd_scene load_steps=40 format=3 uid="uid://ghguuhv7km7q"]
 
-[ext_resource type="PackedScene" uid="uid://cx2wgco3sqmvd" path="res://Assets/Scenes/area_checkpoint.tscn" id="1_gne2c"]
+[ext_resource type="PackedScene" uid="uid://cx2wgco3sqmvd" path="res://Assets/Scenes/Gameplay/area_checkpoint.tscn" id="1_gne2c"]
 [ext_resource type="PackedScene" uid="uid://gxe3tiohahc6" path="res://Assets/Scenes/Objects/downlight.tscn" id="2_2sq0v"]
 [ext_resource type="Material" uid="uid://bt2i703qbg1dd" path="res://Assets/Materials/GreenDiamondWallpaper.tres" id="2_5xt42"]
 [ext_resource type="Material" uid="uid://ckiyl08mh5unu" path="res://Assets/Materials/Drywall.tres" id="2_adwas"]
 [ext_resource type="PackedScene" uid="uid://tced2gfbrgy" path="res://Assets/Scenes/Interactables/box_button.tscn" id="2_l2l8s"]
-[ext_resource type="Script" path="res://Assets/Scripts/PathPlatform.gd" id="3_7ho35"]
+[ext_resource type="Script" path="res://Assets/Scripts/Interactables/PathPlatform.gd" id="3_7ho35"]
 [ext_resource type="Material" uid="uid://dtlvb0oikgk76" path="res://Assets/Materials/White_Walltrim.tres" id="4_6pe8p"]
 [ext_resource type="Material" uid="uid://bb4r5wvpriif4" path="res://Assets/Materials/Wood_Planks.tres" id="4_oujwi"]
 [ext_resource type="PackedScene" uid="uid://bm6v5sdrojwt1" path="res://Assets/Scenes/Objects/chair.tscn" id="6_0mgik"]

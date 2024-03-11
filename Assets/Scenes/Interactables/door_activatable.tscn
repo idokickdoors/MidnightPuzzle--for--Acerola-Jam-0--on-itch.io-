@@ -1,6 +1,6 @@
 [gd_scene load_steps=21 format=3 uid="uid://boaoprrmj0bql"]
 
-[ext_resource type="Script" path="res://Assets/Scripts/AnimatedDoor.gd" id="1_roe2p"]
+[ext_resource type="Script" path="res://Assets/Scripts/Interactables/AnimatedDoor.gd" id="1_roe2p"]
 [ext_resource type="Material" uid="uid://bsa0csbf736mp" path="res://Assets/Materials/Button_Inactive.tres" id="2_s1xkn"]
 [ext_resource type="Material" uid="uid://dk0t1ls6gh7sk" path="res://Assets/Materials/Button_Active.tres" id="3_t00md"]
 [ext_resource type="PackedScene" uid="uid://cwpfqtf3bxbh4" path="res://Assets/3dModels/Door/editable_door.tscn" id="4_01l2v"]

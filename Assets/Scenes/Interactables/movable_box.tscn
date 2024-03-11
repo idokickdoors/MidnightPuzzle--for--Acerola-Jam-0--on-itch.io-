@@ -1,17 +1,17 @@
 [gd_scene load_steps=10 format=3 uid="uid://byjgkfayp3ojq"]
 
-[ext_resource type="Script" path="res://Assets/Scripts/movable_box.gd" id="1_h0k3f"]
+[ext_resource type="Script" path="res://Assets/Scripts/Interactables/movable_box.gd" id="1_h0k3f"]
 [ext_resource type="PackedScene" uid="uid://jhwahy77puvd" path="res://Assets/3dModels/CardboardBox/CardboardBox.glb" id="1_unwm8"]
 [ext_resource type="AudioStream" uid="uid://dehnjtxa4lw" path="res://Sounds/CardboardBox/CardboardHit_01.ogg" id="3_fxwie"]
 [ext_resource type="AudioStream" uid="uid://b24hd4r0rn3x5" path="res://Sounds/CardboardBox/CardboardHit_02.ogg" id="4_ghxve"]
 [ext_resource type="AudioStream" uid="uid://bwrixgduhkvu1" path="res://Sounds/CardboardBox/CardboardHit_03.ogg" id="5_lnag3"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jmb5o"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8n38k"]
 transparency = 1
 albedo_color = Color(1, 1, 1, 0)
 
 [sub_resource type="BoxMesh" id="BoxMesh_wtmcp"]
-material = SubResource("StandardMaterial3D_jmb5o")
+material = SubResource("StandardMaterial3D_8n38k")
 size = Vector3(0.91, 0.91, 0.91)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_y5051"]
@@ -26,7 +26,7 @@ stream_1/weight = 1.0
 stream_2/stream = ExtResource("5_lnag3")
 stream_2/weight = 1.0
 
-[node name="MovableBox3" type="RigidBody3D" groups=["grabbable"]]
+[node name="MovableBox" type="RigidBody3D" groups=["grabbable"]]
 can_sleep = false
 max_contacts_reported = 1
 contact_monitor = true

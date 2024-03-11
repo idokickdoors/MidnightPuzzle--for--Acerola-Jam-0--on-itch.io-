@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=3 uid="uid://b62yunsymvvm8"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/Interactables/downlight_togglable.gd" id="1_rv2rx"]
+[ext_resource type="Material" uid="uid://dcv2iepys7y3b" path="res://Assets/Materials/Metalic_Smooth.tres" id="2_jdg1u"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ol480"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 2.95
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_caqia"]
+albedo_color = Color(0.278431, 0.247059, 0.207843, 1)
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 2.95
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cgq2d"]
+albedo_color = Color(0.278431, 0.247059, 0.207843, 1)
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 2.95
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_fea8u"]
+top_radius = 0.4
+bottom_radius = 0.4
+height = 0.2
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_st88e"]
+material = ExtResource("2_jdg1u")
+top_radius = 0.45
+bottom_radius = 0.45
+height = 0.199
+
+[node name="Downlight_togglable" type="Node3D"]
+script = ExtResource("1_rv2rx")
+active_material = SubResource("StandardMaterial3D_ol480")
+inactive_material = SubResource("StandardMaterial3D_caqia")
+
+[node name="LightEmitter" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_cgq2d")
+mesh = SubResource("CylinderMesh_fea8u")
+skeleton = NodePath("../..")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="LightEmitter"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+visible = false
+light_energy = 2.4
+light_size = 0.235
+light_specular = 1.955
+shadow_enabled = true
+distance_fade_enabled = true
+distance_fade_begin = 20.0
+distance_fade_shadow = 25.0
+spot_range = 11.2466
+spot_angle = 75.5837
+
+[node name="OutterRing" type="MeshInstance3D" parent="."]
+mesh = SubResource("CylinderMesh_st88e")
