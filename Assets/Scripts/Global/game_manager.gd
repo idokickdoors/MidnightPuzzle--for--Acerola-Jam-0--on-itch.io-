@@ -14,17 +14,18 @@ func set_current_level(node: Node3D, spawn_location: Transform3D):
 	spawn_transform = spawn_location
 
 func reload_from_checkpoint():
-	var game_node = get_tree().root.get_node("/root/Game")
+	var parent = level_node.get_parent()
+	
+	get_tree().get_first_node_in_group("Character").queue_free()
 	
 	level_node.queue_free()
 	var level = load(level_res_path).instantiate()
 	level.global_transform = level_transform
-	game_node.add_child(level)
-	
+	parent.add_child(level)
 	level_node = level
-	get_tree().get_first_node_in_group("Character").queue_free()
+	
 	var character = CHARACTER.instantiate()
-	game_node.add_child(character)
+	parent.add_child(character)
 	character.global_transform = spawn_transform
 	
 	get_tree().paused = false

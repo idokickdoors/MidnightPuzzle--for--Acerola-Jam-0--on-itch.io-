@@ -1,11 +1,18 @@
-[gd_scene load_steps=21 format=3 uid="uid://d577g6afu5xi"]
+[gd_scene load_steps=30 format=3 uid="uid://d577g6afu5xi"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/Interactables/inhabited_box.gd" id="1_7vg6c"]
 [ext_resource type="PackedScene" uid="uid://jhwahy77puvd" path="res://Assets/3dModels/CardboardBox/CardboardBox.glb" id="1_xsvkf"]
 [ext_resource type="PackedScene" uid="uid://dujgbey2vag3h" path="res://Assets/3dModels/BoxLegs/box_legs.tscn" id="2_m7gyk"]
+[ext_resource type="AudioStream" uid="uid://yhgcfbq7dnpq" path="res://Sounds/Creature/CreatureSteps/Creature_Steps_01.ogg" id="4_1fgu8"]
+[ext_resource type="AudioStream" uid="uid://d1hr852wcu36h" path="res://Sounds/Creature/CreatureSteps/Creature_Steps_02.ogg" id="5_24jqk"]
+[ext_resource type="AudioStream" uid="uid://b5wvqvmjrrwq1" path="res://Sounds/Creature/CreatureSteps/Creature_Steps_03.ogg" id="6_gn3hw"]
+[ext_resource type="AudioStream" uid="uid://ubx8ay2v54xc" path="res://Sounds/Creature/CreatureNoises/CreatureNoise_01.ogg" id="7_tcv5a"]
+[ext_resource type="AudioStream" uid="uid://dplx3rllagt50" path="res://Sounds/Creature/CreatureNoises/CreatureNoise_02.ogg" id="8_ok43b"]
+[ext_resource type="AudioStream" uid="uid://bwpx25pmsrgvy" path="res://Sounds/Creature/CreatureNoises/CreatureNoise_03.ogg" id="9_t6lc5"]
+[ext_resource type="AudioStream" uid="uid://cmt6vjcxyb050" path="res://Sounds/Creature/CreatureNoises/CreatureNoise_04.ogg" id="10_ffgoe"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_jipd1"]
-radius = 4.5
+radius = 3.5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jmb5o"]
 transparency = 1
@@ -14,106 +21,6 @@ albedo_color = Color(1, 1, 1, 0)
 [sub_resource type="BoxMesh" id="BoxMesh_dnhhy"]
 material = SubResource("StandardMaterial3D_jmb5o")
 size = Vector3(0.91, 0.91, 0.91)
-
-[sub_resource type="Animation" id="Animation_4hg48"]
-resource_name = "BoxMove"
-length = 1.2
-loop_mode = 1
-tracks/0/type = "rotation_3d"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("BoxLegs2/Armature/Skeleton3D:UpperLeg")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, -0.329446, -0.0525929, 0.239127, 0.911876, 0.1, 1, -0.305988, -0.0395408, 0.160204, 0.937626, 0.3, 1, -0.252279, -0.0126351, -0.000690797, 0.967572, 0.6, 1, -0.149135, -0.101797, 0.258501, 0.948985, 0.7, 1, -0.328198, -0.0372748, 0.114912, 0.936852, 0.8, 1, -0.488556, 0.0293722, -0.0352259, 0.871326, 1, 1, -0.510957, -0.00997023, 0.099702, 0.853747, 1.2, 1, -0.329446, -0.0525929, 0.239127, 0.911876)
-tracks/1/type = "rotation_3d"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("BoxLegs2/Armature/Skeleton3D:LowerLeg")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = PackedFloat32Array(0, 1, 0.606898, -0.277954, -0.208277, 0.714868, 0.1, 1, 0.735411, -0.385609, -0.103046, 0.547594, 0.3, 1, 0.895974, -0.403066, -0.0121298, 0.186069, 0.6, 1, 0.948547, -0.27716, 0.0062643, 0.152976, 0.7, 1, 0.947524, -0.293629, -0.105311, -0.0699256, 0.8, 1, 0.935163, -0.308619, -0.143375, 0.0983261, 1, 1, 0.77701, -0.322161, -0.164627, 0.515136, 1.2, 1, 0.606898, -0.277954, -0.208277, 0.714868)
-tracks/2/type = "rotation_3d"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("BoxLegs/Armature/Skeleton3D:UpperLeg")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = PackedFloat32Array(0, 1, -0.375796, -0.0653067, -0.235945, 0.89378, 0.3, 1, -0.321692, -0.204944, 0.12632, 0.915727, 0.6, 1, -0.259093, -0.124603, -0.0828762, 0.954189, 0.7, 1, -0.31888, -0.119489, -0.103918, 0.934473, 1, 1, -0.538698, -0.293053, 0.11296, 0.78177, 1.2, 1, -0.375796, -0.0653067, -0.235945, 0.89378)
-tracks/3/type = "rotation_3d"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("BoxLegs/Armature/Skeleton3D:LowerLeg")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = PackedFloat32Array(0, 1, 0.606933, -0.277969, -0.207977, 0.714921, 0.3, 1, 0.274819, 0.151939, 0.855397, -0.411928, 0.6, 1, 0.455754, 0.139125, 0.844599, -0.2441, 0.7, 1, 0.291935, 0.104357, 0.843141, -0.439314, 1, 1, 0.292926, -0.135032, -0.739788, 0.590487, 1.2, 1, 0.606933, -0.277969, -0.207977, 0.714921)
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath(".:moving")
-tracks/4/interp = 0
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-
-[sub_resource type="Animation" id="Animation_ys0ga"]
-length = 0.001
-tracks/0/type = "rotation_3d"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("BoxLegs/Armature/Skeleton3D:UpperLeg")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 3.97787e-08, 0, 0, 1)
-tracks/1/type = "rotation_3d"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("BoxLegs/Armature/Skeleton3D:LowerLeg")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = PackedFloat32Array(0, 1, 1.77961e-08, 0, 0, 1)
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:moving")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/3/type = "rotation_3d"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("BoxLegs2/Armature/Skeleton3D:UpperLeg")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = PackedFloat32Array(0, 1, -0.329446, -0.0525929, 0.239127, 0.911876)
-tracks/4/type = "rotation_3d"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("BoxLegs2/Armature/Skeleton3D:LowerLeg")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = PackedFloat32Array(0, 1, 0.606898, -0.277954, -0.208277, 0.714868)
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Eyes/LeftEye:mesh:material:albedo_color")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 0.227451, 0.203922, 1)]
-}
 
 [sub_resource type="Animation" id="Animation_n34ek"]
 resource_name = "Activate"
@@ -212,6 +119,75 @@ tracks/12/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 0.227451, 0.203922, 0), Color(1, 0.227451, 0.203922, 1)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Noises:playing")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_4hg48"]
+resource_name = "BoxMove"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BoxLegs2/Armature/Skeleton3D:UpperLeg")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, -0.329446, -0.0525929, 0.239127, 0.911876, 0.1, 1, -0.305988, -0.0395408, 0.160204, 0.937626, 0.3, 1, -0.252279, -0.0126351, -0.000690797, 0.967572, 0.6, 1, -0.149135, -0.101797, 0.258501, 0.948985, 0.7, 1, -0.328198, -0.0372748, 0.114912, 0.936852, 0.8, 1, -0.488556, 0.0293722, -0.0352259, 0.871326, 1, 1, -0.510957, -0.00997023, 0.099702, 0.853747, 1.2, 1, -0.329446, -0.0525929, 0.239127, 0.911876)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BoxLegs2/Armature/Skeleton3D:LowerLeg")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0.606898, -0.277954, -0.208277, 0.714868, 0.1, 1, 0.735411, -0.385609, -0.103046, 0.547594, 0.3, 1, 0.895974, -0.403066, -0.0121298, 0.186069, 0.6, 1, 0.948547, -0.27716, 0.0062643, 0.152976, 0.7, 1, 0.947524, -0.293629, -0.105311, -0.0699256, 0.8, 1, 0.935163, -0.308619, -0.143375, 0.0983261, 1, 1, 0.77701, -0.322161, -0.164627, 0.515136, 1.2, 1, 0.606898, -0.277954, -0.208277, 0.714868)
+tracks/2/type = "rotation_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BoxLegs/Armature/Skeleton3D:UpperLeg")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, -0.375796, -0.0653067, -0.235945, 0.89378, 0.3, 1, -0.321692, -0.204944, 0.12632, 0.915727, 0.6, 1, -0.259093, -0.124603, -0.0828762, 0.954189, 0.7, 1, -0.31888, -0.119489, -0.103918, 0.934473, 1, 1, -0.538698, -0.293053, 0.11296, 0.78177, 1.2, 1, -0.375796, -0.0653067, -0.235945, 0.89378)
+tracks/3/type = "rotation_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BoxLegs/Armature/Skeleton3D:LowerLeg")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, 0.606933, -0.277969, -0.207977, 0.714921, 0.3, 1, 0.274819, 0.151939, 0.855397, -0.411928, 0.6, 1, 0.455754, 0.139125, 0.844599, -0.2441, 0.7, 1, 0.291935, 0.104357, 0.843141, -0.439314, 1, 1, 0.292926, -0.135032, -0.739788, 0.590487, 1.2, 1, 0.606933, -0.277969, -0.207977, 0.714921)
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:moving")
+tracks/4/interp = 0
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("FootSteps:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_6ktr2"]
@@ -314,6 +290,85 @@ tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = PackedFloat32Array(0, 1, 1, 1, 1)
 
+[sub_resource type="Animation" id="Animation_ys0ga"]
+length = 0.001
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BoxLegs/Armature/Skeleton3D:UpperLeg")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 3.97787e-08, 0, 0, 1)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BoxLegs/Armature/Skeleton3D:LowerLeg")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 1.77961e-08, 0, 0, 1)
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:moving")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "rotation_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BoxLegs2/Armature/Skeleton3D:UpperLeg")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, -0.329446, -0.0525929, 0.239127, 0.911876)
+tracks/4/type = "rotation_3d"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("BoxLegs2/Armature/Skeleton3D:LowerLeg")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = PackedFloat32Array(0, 1, 0.606898, -0.277954, -0.208277, 0.714868)
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Eyes/LeftEye:mesh:material:albedo_color")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0.227451, 0.203922, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("FootSteps:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Noises:playing")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1dypt"]
 _data = {
 "Activate": SubResource("Animation_n34ek"),
@@ -336,6 +391,7 @@ fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5, 0)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_12gdd"]
+resource_local_to_scene = true
 transparency = 1
 albedo_color = Color(1, 0.227451, 0.203922, 1)
 albedo_texture = SubResource("GradientTexture2D_1jk1e")
@@ -346,6 +402,7 @@ emission_operator = 1
 emission_texture = SubResource("GradientTexture2D_1jk1e")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_45d2c"]
+resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_12gdd")
 size = Vector2(0.1, 0.07)
 
@@ -367,6 +424,28 @@ metallic_specular = 0.0
 [sub_resource type="PlaneMesh" id="PlaneMesh_vb26i"]
 material = SubResource("StandardMaterial3D_bnm8m")
 size = Vector2(0.15, 0.15)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_v1ifc"]
+playback_mode = 1
+streams_count = 3
+stream_0/stream = ExtResource("4_1fgu8")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("5_24jqk")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("6_gn3hw")
+stream_2/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_alh2h"]
+playback_mode = 1
+streams_count = 4
+stream_0/stream = ExtResource("7_tcv5a")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("8_ok43b")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("9_t6lc5")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("10_ffgoe")
+stream_3/weight = 1.0
 
 [node name="InhabitedBox" type="RigidBody3D" groups=["grabbable"]]
 axis_lock_angular_x = true
@@ -406,13 +485,11 @@ bones/0/rotation = Quaternion(3.97787e-08, 0, 0, 1)
 bones/0/scale = Vector3(0.392554, 0.392554, 0.392554)
 bones/1/position = Vector3(5.30502e-07, 2.12119, -2.80614e-07)
 bones/1/rotation = Quaternion(1.77961e-08, 0, 0, 1)
-bones/1/scale = Vector3(1, 1, 1)
 
 [node name="BoxLegs2" parent="." instance=ExtResource("2_m7gyk")]
 transform = Transform3D(0.23, 0, 0, 0, 0.23, 0, 0, 0, 0.23, -0.332, -0.321, 0.444)
 
 [node name="Skeleton3D" parent="BoxLegs2/Armature" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 bones/0/position = Vector3(0, -2.46762, 0)
 bones/0/rotation = Quaternion(-0.329446, -0.0525929, 0.239127, 0.911876)
 bones/0/scale = Vector3(0.382841, 0.382841, 0.382841)
@@ -442,7 +519,27 @@ mesh = SubResource("PlaneMesh_vb26i")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.34, -0.011, 0)
 mesh = SubResource("PlaneMesh_vb26i")
 
+[node name="FootSteps" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0.5)
+stream = SubResource("AudioStreamRandomizer_v1ifc")
+volume_db = -12.0
+max_distance = 7.0
+attenuation_filter_db = -4.0
+
+[node name="Noises" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_alh2h")
+volume_db = -26.0
+max_distance = 9.0
+attenuation_filter_db = -8.0
+
+[node name="NoiseTimer" type="Timer" parent="Noises"]
+process_callback = 0
+wait_time = 7.0
+one_shot = true
+
 [connection signal="body_entered" from="ActivationArea" to="." method="_on_activation"]
+[connection signal="finished" from="Noises" to="." method="_on_noises_finished"]
+[connection signal="timeout" from="Noises/NoiseTimer" to="." method="_on_noise_timer_timeout"]
 
 [editable path="BoxLegs"]
 [editable path="BoxLegs2"]

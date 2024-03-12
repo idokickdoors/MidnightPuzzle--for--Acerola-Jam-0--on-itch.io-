@@ -1,0 +1,270 @@
+[gd_scene load_steps=30 format=3 uid="uid://c80dfqndqmtat"]
+
+[ext_resource type="PackedScene" uid="uid://cx2wgco3sqmvd" path="res://Assets/Scenes/Gameplay/area_checkpoint.tscn" id="1_dkqi5"]
+[ext_resource type="MeshLibrary" uid="uid://dcuuevkoxl1di" path="res://Assets/GridMapStuff/Wall_Tiles_Edge.tres" id="1_etcqy"]
+[ext_resource type="Script" path="res://Assets/Scripts/Interactables/PathPlatform.gd" id="2_2jlcf"]
+[ext_resource type="Material" uid="uid://bb4r5wvpriif4" path="res://Assets/Materials/Wood_Planks.tres" id="3_3ki15"]
+[ext_resource type="PackedScene" uid="uid://boaoprrmj0bql" path="res://Assets/Scenes/Interactables/door_activatable.tscn" id="4_v3otu"]
+[ext_resource type="PackedScene" uid="uid://tced2gfbrgy" path="res://Assets/Scenes/Interactables/box_button.tscn" id="5_i0shy"]
+[ext_resource type="Material" uid="uid://bt2i703qbg1dd" path="res://Assets/Materials/GreenDiamondWallpaper.tres" id="5_kcygg"]
+[ext_resource type="PackedScene" uid="uid://l4hbh3u6738f" path="res://Assets/Scenes/Interactables/box_spawner.tscn" id="6_ggtwn"]
+[ext_resource type="Material" uid="uid://ckiyl08mh5unu" path="res://Assets/Materials/Drywall.tres" id="6_rfai0"]
+[ext_resource type="PackedScene" uid="uid://d577g6afu5xi" path="res://Assets/Scenes/Interactables/inhabited_box.tscn" id="7_1p8kd"]
+[ext_resource type="Material" uid="uid://dtlvb0oikgk76" path="res://Assets/Materials/White_Walltrim.tres" id="7_1t3me"]
+[ext_resource type="PackedScene" uid="uid://bpjm4uwq1in5o" path="res://Assets/Scenes/Interactables/delay_timer.tscn" id="9_7wygk"]
+[ext_resource type="PackedScene" uid="uid://y2fercihb0oo" path="res://Assets/Scenes/Objects/door_open_static.tscn" id="12_nb2pb"]
+[ext_resource type="PackedScene" uid="uid://gxe3tiohahc6" path="res://Assets/Scenes/Objects/downlight.tscn" id="13_mkwq8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8rae6"]
+size = Vector3(2, 3, 2)
+
+[sub_resource type="Curve3D" id="Curve3D_a3vkm"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 2),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="BoxMesh" id="BoxMesh_rchg7"]
+material = ExtResource("3_3ki15")
+size = Vector3(1.9, 0.101, 1.9)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1xbmg"]
+albedo_color = Color(0.803922, 0.756863, 0.768627, 1)
+metallic = 0.6
+metallic_specular = 0.88
+roughness = 0.43
+
+[sub_resource type="BoxMesh" id="BoxMesh_vyp7t"]
+material = SubResource("StandardMaterial3D_1xbmg")
+size = Vector3(2, 0.1, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7yxkh"]
+size = Vector3(2, 0.2, 2)
+
+[sub_resource type="Curve3D" id="Curve3D_de7fg"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -4),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="BoxMesh" id="BoxMesh_qhm8d"]
+material = ExtResource("3_3ki15")
+size = Vector3(1.9, 0.101, 1.9)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8x2ph"]
+material = SubResource("StandardMaterial3D_1xbmg")
+size = Vector3(2, 0.1, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iybe4"]
+size = Vector3(2, 0.2, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_c77fy"]
+material = ExtResource("5_kcygg")
+size = Vector3(0.25, 1, 0.001)
+
+[sub_resource type="BoxMesh" id="BoxMesh_qsw7g"]
+material = ExtResource("6_rfai0")
+size = Vector3(0.25, 1.3, 0.001)
+
+[sub_resource type="BoxMesh" id="BoxMesh_bs8iw"]
+material = ExtResource("6_rfai0")
+size = Vector3(2, 0.65, 0.001)
+
+[sub_resource type="BoxMesh" id="BoxMesh_gpnbb"]
+material = ExtResource("7_1t3me")
+size = Vector3(0.25, 0.099, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_mpsey"]
+material = ExtResource("7_1t3me")
+size = Vector3(1.5, 0.049, 0.1)
+
+[node name="Level_05" type="Node3D"]
+
+[node name="AreaCheckpoint" parent="." instance=ExtResource("1_dkqi5")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4, 1, 2)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AreaCheckpoint"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_8rae6")
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource("1_etcqy")
+cell_size = Vector3(1, 1, 1)
+data = {
+"cells": PackedInt32Array(-1, 0, 851986, -65535, 65535, 851986, -65536, 65535, 851986, -65536, 65534, 851986, -1, 65534, 851986, -1, 65535, 851986, -2, 65534, 851986, -2, 65535, 851986, -2, 0, 851986, -65535, 65534, 851986, -2, 1, 851986, -1, 1, 851986, -1, 2, 851986, -2, 2, 851986, -3, 2, 851986, -3, 1, 851986, -3, 0, 851986, -3, 65535, 851986, -3, 65534, 851986, -2, 65533, 851986, -1, 65533, 851986, -65536, 65533, 851986, -65535, 65533, 851986, -65534, 65534, 851986, -65534, 65535, 851986, -65534, 0, 851986, -65534, 1, 851986, -65534, 2, 851986, -65534, 65533, 851986, -3, 65533, 851986, 3, 65533, 1441811, 65540, 65532, 19, 131075, 65531, 1048595, 4, 65533, 1048594, 65540, 65531, 1048594, 131074, 65531, 1048594, 131073, 65531, 1048594, 131072, 65531, 1048594, 131074, 65530, 1048594, 131074, 65529, 1048594, 131073, 65529, 1048594, 131073, 65530, 1048594, 131072, 65530, 1048594, 131072, 65529, 1048594, 3, 65532, 1048580, 2, 65532, 1048580, 1, 65532, 1048580, 0, 65532, 1048580, 65535, 65532, 1048580, 3, 65535, 1048580, 3, 0, 1048580, 3, 1, 1048580, 3, 2, 1048580, 2, 3, 1048580, 1, 3, 1048580, 0, 3, 1048580, 65535, 3, 1048580, 65534, 3, 1048580, 65533, 3, 1048580, 65532, 65533, 1048580, 65532, 65534, 1048580, 65532, 65535, 1048580, 65532, 0, 1048580, 65539, 65532, 1048585, 65538, 65532, 1048585, 65537, 65532, 1048585, 65536, 65532, 1048585, 131075, 65532, 1048585, 131074, 65532, 1048594, 131073, 65532, 1048594, 131072, 65532, 1048594, 65539, 65535, 1048585, 131075, 65535, 1048585, 262143, 65531, 1048585, 262143, 65530, 1048585, 262143, 65529, 1048585, 196608, 65528, 1048585, 196609, 65528, 1048585, 196610, 65528, 1048585, 196611, 65529, 1048585, 131071, 65532, 1048585, 196607, 65532, 1048585, 262143, 65532, 1048585, 262144, 65528, 1048585, 262145, 65528, 1048585, 262146, 65528, 1048585, 262147, 65529, 1048585, 327679, 65529, 1048585, 327679, 65530, 1048585, 327679, 65531, 1048585, 327679, 65532, 1048585, 196611, 65532, 1048585, 262147, 65532, 1048585, 327683, 65529, 1048585, 327683, 65530, 1048585, 327683, 65531, 1048585, 327682, 65528, 1048585, 327681, 65528, 1048585, 327680, 65528, 1048585, 393215, 65529, 1048585, 393215, 65530, 1048585, 393215, 65531, 1048585, 393215, 65532, 1048585, 131074, 65533, 655365, 131073, 65533, 655365, 131072, 65533, 655365, 196604, 65534, 589842, 196604, 65533, 589842, 196603, 65534, 589842, 196603, 65533, 589842, 131068, 65533, 458761, 131068, 65534, 458761, -65536, 0, 19, -65535, 0, 19, -131072, 1, 18, -131071, 1, 18, -131071, 2, 18, -131072, 2, 18, -65535, 3, 9, -65536, 3, 9, 65532, 65532, 786436, 131068, 65532, 786441, 196604, 65532, 786441, 262141, 65532, 1376265, 262142, 65532, 1376265, 327683, 65532, 1310729, 327683, 65533, 1310729, 327683, 65534, 1310729, 131075, 65530, 1048595, 65541, 65532, 19, 3, 65534, 1441811, 4, 65534, 1441810, 5, 65533, 1441810, 5, 65534, 1441810, 65540, 65530, 1441810, 65541, 65530, 1441810, 65541, 65531, 1441810, 196611, 65535, 196617, 262147, 65535, 1441801, 327683, 65535, 1441801, 65539, 0, 393225, 65539, 1, 393225, 65539, 2, 393225, 131075, 0, 393225, 131075, 1, 393225, 131075, 2, 393225, 196611, 0, 393225, 196611, 1, 393225, 196611, 2, 393225, 262147, 0, 393225, 262147, 1, 393225, 262147, 2, 393225, 327683, 0, 393225, 327683, 1, 393225, 327683, 2, 393225, 327676, 65532, 9, 327675, 65532, 9, 327678, 65532, 9, 327677, 65532, 9, 393214, 65532, 9, 393213, 65532, 9, 393212, 65532, 9, 393211, 65532, 9, 65538, 3, 9, 65537, 3, 9, 65536, 3, 9, 131071, 3, 9, 131070, 3, 9, 131069, 3, 9, 196607, 3, 9, 196606, 3, 9, 196605, 3, 9, 262143, 3, 9, 327679, 3, 9, 393215, 3, 9, 131068, 0, 9, 131068, 65535, 9, 196604, 65535, 9, 196604, 0, 9, 327676, 0, 9, 327676, 65535, 9, 393212, 65535, 9, 393212, 0, 9, 393211, 65535, 9, 327675, 65535, 9, 262139, 65535, 4, 262140, 65532, 4, 262139, 65532, 4, 131074, 3, 786450, 131073, 3, 786450, 131072, 3, 786450, 131074, 4, 786450, 131073, 4, 786450, 131072, 4, 786450, 131074, 5, 786450, 131073, 5, 786450, 131072, 5, 786450, 131074, 2, 5, 131073, 2, 5, 131072, 2, 5, 196611, 5, 9, 196611, 4, 9, 196611, 3, 9, 196610, 6, 9, 196609, 6, 9, 196608, 6, 9, 262143, 5, 9, 262143, 4, 9, 327679, 5, 9, 327679, 4, 9, 262146, 6, 9, 262145, 6, 9, 262144, 6, 9, 262147, 5, 9, 262147, 4, 9, 262147, 3, 9, 327683, 5, 9, 327683, 4, 9, 327683, 3, 9, 327682, 6, 9, 327681, 6, 9, 327680, 6, 9, 393215, 5, 9, 393215, 4, 9, 196605, 65534, 1441797, 196605, 65533, 1441797, -4, 1, 1441810, -4, 2, 1441810, -5, 2, 1441810, -5, 1, 1441810, 65531, 0, 1441796, 65532, 3, 1441796, 65531, 3, 1441796, 131068, 3, 1441801, 131067, 3, 1441801, 131067, 0, 1441801, 196603, 0, 1441801, 196604, 3, 1441801, 196603, 3, 1441801, 262139, 1, 1441801, 262140, 1, 1441801, 262140, 65535, 1048577, 262141, 0, 1441792, 196605, 65532, 1114121, 196606, 65532, 1114121, 131069, 65532, 1114121, 131070, 65532, 1114121, 65533, 65532, 1114116, 65534, 65532, 1114116, 65540, 65535, 720901, 65541, 65534, 6, 65542, 65533, 1441797, 65542, 65532, 1441797, 131075, 65529, 196617, 131077, 65530, 1048582, 196613, 65530, 1048582, 262149, 65530, 1048582, 131077, 65531, 1048581, 131077, 65532, 1048581, 131077, 65533, 1048581, 131076, 65534, 5, 196612, 65534, 5, 262148, 65534, 5, 262149, 65531, 1048581, 262149, 65532, 1048581, 262149, 65533, 1048581, 196613, 65533, 1048581, 196613, 65532, 1048581, 196613, 65531, 1048581, 131077, 65534, 6, 196613, 65534, 6, 262149, 65534, 6, 262148, 65530, 655365, 196612, 65530, 655365, 131076, 65530, 655365, 327685, 65530, 1507333, 327684, 65530, 1507333, 327684, 65531, 1507333, 327684, 65532, 1507333, 327684, 65533, 1507333, 327684, 65534, 1507333, 327685, 65534, 1507333, 327685, 65533, 1507333, 327685, 65532, 1507333, 327685, 65531, 1507333, 262139, 2, 1441801, 262140, 2, 1441801, 262141, 3, 1507337, 262142, 3, 1507337, 262141, 2, 1507337, 262142, 2, 1507337, 262141, 1, 1507337, 262142, 1, 1507337, 327678, 2, 1507337, 327677, 1, 1507337, 327678, 1, 1507337, 393213, 1, 1507337, 393214, 1, 1507337, 393214, 2, 1507337, 393216, 65529, 1507333, 393216, 65530, 1507333, 393216, 65531, 1507333, 393216, 65532, 1507333, 393216, 65533, 1507333, 393216, 65534, 1507333, 393216, 65535, 1507333, 393216, 0, 1507333, 393216, 1, 1507333, 393216, 2, 1507333, 393216, 3, 1507333, 393216, 4, 1507333, 393217, 65529, 1507333, 393217, 65530, 1507333, 393217, 65531, 1507333, 393217, 65532, 1507333, 393217, 65533, 1507333, 393217, 65534, 1507333, 393217, 65535, 1507333, 393217, 0, 1507333, 393217, 1, 1507333, 393217, 2, 1507333, 393217, 3, 1507333, 393217, 4, 1507333, 393218, 65529, 1507333, 393218, 65530, 1507333, 393218, 65531, 1507333, 393218, 65532, 1507333, 393218, 65533, 1507333, 393218, 65534, 1507333, 393218, 65535, 1507333, 393218, 0, 1507333, 393218, 1, 1507333, 393218, 2, 1507333, 393218, 3, 1507333, 393218, 4, 1507333, 393216, 5, 1507333, 393217, 5, 1507333, 393218, 5, 1507333, 458751, 2, 1507333, 458751, 1, 1507333, 458751, 0, 1507333, 458751, 65535, 1507333, 458751, 65534, 1507333, 458751, 65533, 1507333, 458747, 65533, 1507333, 458747, 65534, 1507333, 458748, 65534, 1507333, 458748, 65533, 1507333, 458749, 65533, 1507333, 458750, 65533, 1507333, 458750, 65534, 1507333, 458749, 65534, 1507333, 458749, 65535, 1507333, 458749, 0, 1507333, 458750, 0, 1507333, 458750, 65535, 1507333)
+}
+metadata/_editor_floor_ = Vector3(0, 6, 0)
+
+[node name="DecorGridMap" type="GridMap" parent="."]
+mesh_library = ExtResource("1_etcqy")
+cell_size = Vector3(1, 1, 1)
+data = {
+"cells": PackedInt32Array(262141, 0, 1441802, 262141, 65535, 1441802, 3, 65533, 655370, 2, 65533, 655370, 1, 65533, 655370, 0, 65533, 655370, 2, 1, 1048586, 2, 0, 1048586, 1, 2, 10, 0, 2, 10, 65535, 2, 10, 65534, 2, 10, 65533, 2, 10, 3, 65535, 655371, 2, 2, 11, 65533, 65534, 1441802, 65533, 65535, 1441802, 65533, 0, 1441802, 65535, 65533, 655370, 65534, 65533, 655370, 65533, 65533, 655371, 4, 65534, 10, 5, 65534, 10, 262140, 65533, 655370, 262139, 65533, 655370, 262140, 65534, 10, 262139, 65534, 10, 65532, 2, 10, 65531, 2, 10, 65532, 1, 655370, 65531, 1, 655370)
+}
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="BigPlatform" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 2, -2)
+curve = SubResource("Curve3D_a3vkm")
+script = ExtResource("2_2jlcf")
+speed = 2.2
+
+[node name="PlatformMover" type="PathFollow3D" parent="BigPlatform"]
+transform = Transform3D(1, 0, 0, 0, 0.999987, 0, 0, 0, 0.999998, 0, 0, 0)
+rotation_mode = 0
+loop = false
+
+[node name="Platform" type="AnimatableBody3D" parent="BigPlatform/PlatformMover"]
+sync_to_physics = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BigPlatform/PlatformMover/Platform"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
+mesh = SubResource("BoxMesh_rchg7")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="BigPlatform/PlatformMover/Platform"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
+mesh = SubResource("BoxMesh_vyp7t")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BigPlatform/PlatformMover/Platform"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 5.3646e-13, 0, 1, 0, 0.4, 0)
+shape = SubResource("BoxShape3D_7yxkh")
+
+[node name="SmallPlatform" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2.5, 2)
+curve = SubResource("Curve3D_de7fg")
+script = ExtResource("2_2jlcf")
+speed = 2.2
+
+[node name="PlatformMover" type="PathFollow3D" parent="SmallPlatform"]
+transform = Transform3D(1, 0, 0, 0, 0.999987, 0, 0, 0, 0.999998, 0, 0, 0)
+rotation_mode = 0
+loop = false
+
+[node name="Platform" type="AnimatableBody3D" parent="SmallPlatform/PlatformMover"]
+sync_to_physics = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SmallPlatform/PlatformMover/Platform"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
+mesh = SubResource("BoxMesh_qhm8d")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="SmallPlatform/PlatformMover/Platform"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
+mesh = SubResource("BoxMesh_8x2ph")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SmallPlatform/PlatformMover/Platform"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 5.3646e-13, 0, 1, 0, 0.4, 0)
+shape = SubResource("BoxShape3D_iybe4")
+
+[node name="DoorActivatable" parent="." instance=ExtResource("4_v3otu")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 3, -2)
+
+[node name="Wallpaper" type="MeshInstance3D" parent="DoorActivatable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.875, 0.5, 0)
+mesh = SubResource("BoxMesh_c77fy")
+
+[node name="Wallpaper2" type="MeshInstance3D" parent="DoorActivatable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.875, 0.5, 0)
+mesh = SubResource("BoxMesh_c77fy")
+
+[node name="Drywall" type="MeshInstance3D" parent="DoorActivatable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.875, 1.7, 0)
+mesh = SubResource("BoxMesh_qsw7g")
+
+[node name="Drywall2" type="MeshInstance3D" parent="DoorActivatable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.875, 1.7, 0)
+mesh = SubResource("BoxMesh_qsw7g")
+
+[node name="Drywall3" type="MeshInstance3D" parent="DoorActivatable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.675, 0)
+mesh = SubResource("BoxMesh_bs8iw")
+
+[node name="Walltrim" type="MeshInstance3D" parent="DoorActivatable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.875, 0, 0)
+mesh = SubResource("BoxMesh_gpnbb")
+
+[node name="Walltrim2" type="MeshInstance3D" parent="DoorActivatable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.875, 1, 0)
+mesh = SubResource("BoxMesh_gpnbb")
+
+[node name="Walltrim3" type="MeshInstance3D" parent="DoorActivatable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.875, 0, 0)
+mesh = SubResource("BoxMesh_gpnbb")
+
+[node name="Walltrim4" type="MeshInstance3D" parent="DoorActivatable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.875, 1, 0)
+mesh = SubResource("BoxMesh_gpnbb")
+
+[node name="Walltrim5" type="MeshInstance3D" parent="DoorActivatable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.025, 0)
+mesh = SubResource("BoxMesh_mpsey")
+
+[node name="DoorButton" parent="." instance=ExtResource("5_i0shy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2, 3, 5.2)
+
+[node name="PlatformButton" parent="." instance=ExtResource("5_i0shy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -1, 2.2)
+
+[node name="BigPlatformTimer" parent="PlatformButton" instance=ExtResource("9_7wygk")]
+wait_time = 4.2
+
+[node name="Sounds" parent="PlatformButton/BigPlatformTimer" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -0.5, 2.2)
+
+[node name="BoxSpawner" parent="." instance=ExtResource("6_ggtwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7, 3.5, -6.4)
+MOVABLE_BOX = ExtResource("7_1p8kd")
+
+[node name="DoorOpenStatic" parent="." instance=ExtResource("12_nb2pb")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 0, 2)
+
+[node name="Wallpaper" type="MeshInstance3D" parent="DoorOpenStatic"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.875, 0.5, 0)
+mesh = SubResource("BoxMesh_c77fy")
+
+[node name="Wallpaper2" type="MeshInstance3D" parent="DoorOpenStatic"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.875, 0.5, 0)
+mesh = SubResource("BoxMesh_c77fy")
+
+[node name="Drywall" type="MeshInstance3D" parent="DoorOpenStatic"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.875, 1.7, 0)
+mesh = SubResource("BoxMesh_qsw7g")
+
+[node name="Drywall2" type="MeshInstance3D" parent="DoorOpenStatic"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.875, 1.7, 0)
+mesh = SubResource("BoxMesh_qsw7g")
+
+[node name="Drywall3" type="MeshInstance3D" parent="DoorOpenStatic"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.675, 0)
+mesh = SubResource("BoxMesh_bs8iw")
+
+[node name="Walltrim" type="MeshInstance3D" parent="DoorOpenStatic"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.875, 0, 0)
+mesh = SubResource("BoxMesh_gpnbb")
+
+[node name="Walltrim2" type="MeshInstance3D" parent="DoorOpenStatic"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.875, 1, 0)
+mesh = SubResource("BoxMesh_gpnbb")
+
+[node name="Walltrim3" type="MeshInstance3D" parent="DoorOpenStatic"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.875, 0, 0)
+mesh = SubResource("BoxMesh_gpnbb")
+
+[node name="Walltrim4" type="MeshInstance3D" parent="DoorOpenStatic"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.875, 1, 0)
+mesh = SubResource("BoxMesh_gpnbb")
+
+[node name="Downlight" parent="." instance=ExtResource("13_mkwq8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 6, 0)
+
+[connection signal="activated" from="DoorButton" to="SmallPlatform" method="activate"]
+[connection signal="activated" from="DoorButton" to="DoorActivatable" method="activate"]
+[connection signal="deactivated" from="DoorButton" to="SmallPlatform" method="deactivate"]
+[connection signal="deactivated" from="DoorButton" to="DoorActivatable" method="deactivate"]
+[connection signal="activated" from="PlatformButton" to="BigPlatform" method="activate"]
+[connection signal="activated" from="PlatformButton" to="PlatformButton/BigPlatformTimer" method="reset_timer"]
+[connection signal="deactivated" from="PlatformButton" to="PlatformButton/BigPlatformTimer" method="start_timer"]
+[connection signal="timeout" from="PlatformButton/BigPlatformTimer" to="BigPlatform" method="deactivate"]
+
+[editable path="PlatformButton/BigPlatformTimer"]

@@ -12,7 +12,6 @@ proximity_fade_distance = 0.5
 material = SubResource("StandardMaterial3D_jg2iq")
 
 [node name="BoxSpawner" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 script = ExtResource("1_t8typ")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

@@ -58,10 +58,12 @@ shape = SubResource("BoxShape3D_y04ri")
 [node name="ButtonDeactivateSFX" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("4_ao5ab")
 volume_db = -8.0
+max_distance = 16.0
 
 [node name="ButtonActivateSFX" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("5_snqgl")
 volume_db = -8.0
+max_distance = 16.0
 
 [connection signal="body_entered" from="." to="." method="box_entered"]
 [connection signal="body_exited" from="." to="." method="box_exited"]

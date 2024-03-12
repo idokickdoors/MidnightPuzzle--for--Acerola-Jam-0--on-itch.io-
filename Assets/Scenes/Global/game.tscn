@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c2oy8p27j42x0"]
+[gd_scene load_steps=13 format=3 uid="uid://c2oy8p27j42x0"]
 
 [ext_resource type="Environment" uid="uid://b8vsfrc48mcs2" path="res://Assets/gameworld_environment.tres" id="1_s6h25"]
 [ext_resource type="PackedScene" uid="uid://bv4l75ridtjmv" path="res://Assets/Scenes/Gameplay/Character.tscn" id="2_7vsox"]
@@ -8,7 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://ckso3012kq8m8" path="res://Assets/Scenes/Levels/level_03.tscn" id="6_xcc4m"]
 [ext_resource type="PackedScene" uid="uid://cehka0o27an8w" path="res://Assets/Scenes/Levels/level_04.tscn" id="7_566fo"]
 [ext_resource type="PackedScene" uid="uid://busmggw148t3t" path="res://Assets/Scenes/Gameplay/box_deleter.tscn" id="7_arhp4"]
+[ext_resource type="PackedScene" uid="uid://c80dfqndqmtat" path="res://Assets/Scenes/Levels/level_05.tscn" id="8_o3k45"]
 [ext_resource type="PackedScene" uid="uid://yqvjsjiqndsc" path="res://Assets/Scenes/Levels/kitchen.tscn" id="8_wxve1"]
+[ext_resource type="PackedScene" uid="uid://u2pu2r5rgtnj" path="res://Assets/Scenes/Levels/level_06.tscn" id="9_r7auq"]
+[ext_resource type="PackedScene" uid="uid://b7rjy7kesme6d" path="res://Assets/Scenes/Levels/level_07.tscn" id="10_bl3fy"]
 
 [node name="Game" type="Node"]
 
@@ -40,8 +43,17 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -31.5,
 [node name="Level_04" parent="." instance=ExtResource("7_566fo")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -35.5, 13.5, 28.5)
 
+[node name="Level_05" parent="." instance=ExtResource("8_o3k45")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.5, 13.5, 26.5)
+
+[node name="Level_06" parent="." instance=ExtResource("9_r7auq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.5, 24.5, 27.5)
+
+[node name="Level_07" parent="." instance=ExtResource("10_bl3fy")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -53.5, 24.5, 32.5)
+
 [node name="Kitchen" parent="." instance=ExtResource("8_wxve1")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -20.5, 14.5, 32.5026)
+transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, -68.5, 40.5, 27.5026)
 
 [node name="BoxDeleter" parent="." instance=ExtResource("7_arhp4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)

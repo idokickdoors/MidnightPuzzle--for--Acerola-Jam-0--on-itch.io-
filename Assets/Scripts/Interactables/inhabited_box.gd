@@ -27,6 +27,15 @@ func _physics_process(_delta):
 	
 	if moving:
 		var down_velo = linear_velocity.y
-		linear_velocity = basis.z * move_force
+		linear_velocity = global_basis.z * move_force
 		linear_velocity.y += down_velo
 		angular_velocity.y = 0.0
+
+
+@onready var noise_timer = $Noises/NoiseTimer
+func _on_noises_finished():
+	noise_timer.start()
+
+@onready var noises = $Noises
+func _on_noise_timer_timeout():
+	noises.play()

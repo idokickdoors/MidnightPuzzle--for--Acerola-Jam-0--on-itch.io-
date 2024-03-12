@@ -1,0 +1,371 @@
+[gd_scene load_steps=35 format=3 uid="uid://u2pu2r5rgtnj"]
+
+[ext_resource type="PackedScene" uid="uid://cx2wgco3sqmvd" path="res://Assets/Scenes/Gameplay/area_checkpoint.tscn" id="1_t050l"]
+[ext_resource type="MeshLibrary" uid="uid://dcuuevkoxl1di" path="res://Assets/GridMapStuff/Wall_Tiles_Edge.tres" id="1_v6jjf"]
+[ext_resource type="PackedScene" uid="uid://busmggw148t3t" path="res://Assets/Scenes/Gameplay/box_deleter.tscn" id="2_xotxx"]
+[ext_resource type="PackedScene" uid="uid://d577g6afu5xi" path="res://Assets/Scenes/Interactables/inhabited_box.tscn" id="3_nj7bn"]
+[ext_resource type="Script" path="res://Assets/Scripts/Gameplay/OnEventSound.gd" id="4_dd6sn"]
+[ext_resource type="AudioStream" uid="uid://kp3ogi5efwug" path="res://Sounds/Burning/Burning.ogg" id="4_evk18"]
+[ext_resource type="PackedScene" uid="uid://gxe3tiohahc6" path="res://Assets/Scenes/Objects/downlight.tscn" id="5_qh4kb"]
+[ext_resource type="PackedScene" uid="uid://dq5kck5p4jyae" path="res://Assets/Scenes/Objects/downlight_disabled.tscn" id="6_fxx03"]
+[ext_resource type="PackedScene" uid="uid://y2fercihb0oo" path="res://Assets/Scenes/Objects/door_open_static.tscn" id="7_37bot"]
+[ext_resource type="Material" uid="uid://bt2i703qbg1dd" path="res://Assets/Materials/GreenDiamondWallpaper.tres" id="8_iij4o"]
+[ext_resource type="Material" uid="uid://ckiyl08mh5unu" path="res://Assets/Materials/Drywall.tres" id="9_tmcxy"]
+[ext_resource type="Material" uid="uid://clrqg1aiwedt" path="res://Assets/Materials/Concrete.tres" id="9_uapqx"]
+[ext_resource type="Material" uid="uid://dtlvb0oikgk76" path="res://Assets/Materials/White_Walltrim.tres" id="10_pm77u"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lpdkp"]
+size = Vector3(2, 3, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rgj2m"]
+size = Vector3(2, 1, 5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_765el"]
+transparency = 1
+albedo_color = Color(0.921569, 0.0431373, 0.243137, 0.811765)
+
+[sub_resource type="BoxMesh" id="BoxMesh_pw76g"]
+material = SubResource("StandardMaterial3D_765el")
+size = Vector3(2, 1, 5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l0hm4"]
+transparency = 1
+specular_mode = 2
+albedo_color = Color(1, 0.427451, 0.207843, 1)
+emission_enabled = true
+emission = Color(0.917647, 0.113725, 0, 1)
+emission_energy_multiplier = 16.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_f40yi"]
+material = SubResource("StandardMaterial3D_l0hm4")
+size = Vector3(2, 1, 5)
+
+[sub_resource type="Curve" id="Curve_jhxcd"]
+min_value = -1.0
+_data = [Vector2(0, 1.49012e-08), 0.0, 0.0, 0, 0, Vector2(0.26087, -0.428571), 0.0, 0.0, 0, 0, Vector2(0.384058, 0.406593), 0.0, 0.0, 0, 0, Vector2(0.485507, -0.692308), 0.0, 0.0, 0, 0, Vector2(0.644928, 0.78022), 0.0, 0.0, 0, 0, Vector2(0.731884, -0.340659), 0.0, 0.0, 0, 0, Vector2(1, 1.49012e-08), 0.0, 0.0, 0, 0]
+point_count = 7
+
+[sub_resource type="Curve" id="Curve_t6na6"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_cxwqj"]
+min_value = -1.0
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.289855, 0.626374), 0.0, 0.0, 0, 0, Vector2(0.557971, -0.736264), 0.0, 0.0, 0, 0, Vector2(0.8, 1.49012e-08), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_64ruv"]
+curve_x = SubResource("Curve_jhxcd")
+curve_y = SubResource("Curve_t6na6")
+curve_z = SubResource("Curve_cxwqj")
+
+[sub_resource type="Curve" id="Curve_6qh3l"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.8, 0.5), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_u4jv2"]
+curve = SubResource("Curve_6qh3l")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cek11"]
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 2.5)
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_min = 8.0
+initial_velocity_max = 8.0
+directional_velocity_min = 2.0
+directional_velocity_max = 4.0
+directional_velocity_curve = SubResource("CurveXYZTexture_64ruv")
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_u4jv2")
+
+[sub_resource type="SphereMesh" id="SphereMesh_gsj2r"]
+material = SubResource("StandardMaterial3D_l0hm4")
+radius = 0.01
+height = 0.5
+radial_segments = 8
+rings = 4
+
+[sub_resource type="BoxMesh" id="BoxMesh_lgwh6"]
+material = ExtResource("8_iij4o")
+size = Vector3(0.25, 1, 0.001)
+
+[sub_resource type="BoxMesh" id="BoxMesh_epxor"]
+material = ExtResource("9_uapqx")
+size = Vector3(0.25, 2.3, 0.001)
+
+[sub_resource type="BoxMesh" id="BoxMesh_d2xuu"]
+material = ExtResource("9_uapqx")
+size = Vector3(0.5, 2.3, 0.001)
+
+[sub_resource type="BoxMesh" id="BoxMesh_se4js"]
+material = ExtResource("9_uapqx")
+size = Vector3(2, 0.7, 0.001)
+
+[sub_resource type="BoxMesh" id="BoxMesh_na2um"]
+material = ExtResource("9_tmcxy")
+size = Vector3(0.25, 1.3, 0.001)
+
+[sub_resource type="BoxMesh" id="BoxMesh_y2lyp"]
+material = ExtResource("9_tmcxy")
+size = Vector3(2, 0.65, 0.001)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2nt1k"]
+material = ExtResource("10_pm77u")
+size = Vector3(0.25, 0.099, 0.05)
+
+[node name="Level_06" type="Node3D"]
+
+[node name="AreaCheckpoint" parent="." instance=ExtResource("1_t050l")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5, 1, -3)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AreaCheckpoint"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_lpdkp")
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource("1_v6jjf")
+cell_size = Vector3(1, 1, 1)
+data = {
+"cells": PackedInt32Array(-1, 65534, 655385, -65536, 65534, 655385, -65536, 65535, 655385, -1, 65535, 655385, -2, 65534, 655385, -2, 65535, 655385, -65535, 65534, 655385, -65535, 65535, 655385, -3, 65535, 655385, -3, 65534, 655385, -4, 65535, 655385, -4, 65534, 655385, -65534, 65535, 655385, -65533, 65535, 655385, -65533, 65534, 655385, -65534, 65534, 655385, -4, 65533, 655385, -4, 65532, 655385, -3, 65532, 655385, -2, 65532, 655385, -1, 65532, 655385, -1, 65533, 655385, -2, 65533, 655385, -3, 65533, 655385, -65536, 65533, 655385, -65535, 65533, 655385, -65535, 65532, 655385, -65536, 65532, 655385, -65534, 65532, 655385, -65534, 65533, 655385, -65533, 65533, 655385, -65533, 65532, 655385, -65532, 65533, 655378, -65532, 65532, 655378, -65531, 65533, 655378, -65531, 65532, 655378, -65530, 65532, 1048595, -65530, 65533, 1048595, -131065, 65532, 1048595, -131065, 65533, 1048595, -196600, 65532, 1048595, -196600, 65533, 1048595, -262135, 65532, 1048595, -262135, 65533, 1048595, -327670, 65532, 1048595, -327670, 65533, 1048595, -393205, 65532, 1048595, -393205, 65533, 1048595, -458740, 65532, 1048595, -458740, 65533, 1048595, -524275, 65532, 1048595, -524275, 65533, 1048595, -589810, 65533, 1048594, -589810, 65532, 1048594, -589809, 65533, 1048594, -589809, 65532, 1048594, -65533, 5, 983065, -65534, 5, 983065, -65535, 5, 983065, -65536, 5, 983065, -1, 5, 983065, -2, 5, 983065, -3, 5, 983065, -4, 5, 983065, -65534, 6, 983065, -65535, 6, 983065, -65536, 6, 983065, -1, 6, 983065, -2, 6, 983065, -3, 6, 983065, -4, 6, 983065, -65533, 6, 983065, -65533, 7, 983065, -65534, 7, 983065, -65535, 7, 983065, -65536, 7, 983065, -1, 7, 983065, -2, 7, 983065, -3, 7, 983065, -4, 7, 983065, -65534, 8, 983065, -65535, 8, 983065, -65536, 8, 983065, -1, 8, 983065, -2, 8, 983065, -3, 8, 983065, -4, 8, 983065, -65533, 8, 983065, -65533, 9, 983065, -65534, 9, 983065, -65535, 9, 983065, -65536, 9, 983065, -1, 9, 983065, -2, 9, 983065, -3, 9, 983065, -4, 9, 983065, -131069, 4, 983065, -131069, 3, 983065, -131069, 2, 983065, -131069, 1, 983065, -131069, 0, 983065, -131070, 0, 983065, -131070, 1, 983065, -131070, 2, 983065, -131070, 3, 983065, -131070, 4, 983065, -131071, 4, 983065, -131071, 3, 983065, -131071, 2, 983065, -131071, 1, 983065, -131071, 0, 983065, -131072, 0, 983065, -131072, 1, 983065, -131072, 2, 983065, -131072, 3, 983065, -131072, 4, 983065, -65537, 4, 983065, -65537, 3, 983065, -65537, 2, 983065, -65537, 1, 983065, -65537, 0, 983065, -65538, 0, 983065, -65538, 1, 983065, -65538, 2, 983065, -65538, 3, 983065, -65539, 4, 983065, -65538, 4, 983065, -65539, 3, 983065, -65539, 2, 983065, -65539, 1, 983065, -65539, 0, 983065, -65540, 0, 983065, -65540, 1, 983065, -65540, 2, 983065, -65540, 3, 983065, -65540, 4, 983065, -65541, 65535, 983065, -65542, 65535, 983065, -65541, 5, 983065, -65542, 5, 983065, -65543, 5, 983065, -65543, 65535, 983065, -131077, 5, 983065, -131078, 5, 983065, -131079, 5, 983065, -196613, 5, 983065, -196614, 5, 983065, -196615, 5, 983065, -262149, 5, 983065, -262150, 5, 983065, -262151, 5, 983065, -327685, 5, 983065, -327686, 5, 983065, -327687, 5, 983065, -327687, 65535, 983065, -327686, 65535, 983065, -327685, 65535, 983065, -262149, 65535, 983065, -262150, 65535, 983065, -262151, 65535, 983065, -196615, 65535, 983065, -196614, 65535, 983065, -196613, 65535, 983065, -131077, 65535, 983065, -131078, 65535, 983065, -131079, 65535, 983065, -327684, 0, 983065, -327684, 1, 983065, -327684, 2, 983065, -327684, 3, 983065, -327684, 4, 983065, -262148, 0, 983065, -262148, 1, 983065, -262148, 2, 983065, -262148, 3, 983065, -262148, 4, 983065, -196612, 0, 983065, -196612, 1, 983065, -196612, 2, 983065, -196612, 3, 983065, -196612, 4, 983065, -131076, 0, 983065, -131076, 1, 983065, -131076, 2, 983065, -131076, 3, 983065, -131076, 4, 983065, -393222, 0, 983065, -393222, 1, 983065, -393222, 2, 983065, -393222, 3, 983065, -393222, 4, 983065, -393221, 0, 983065, -393221, 1, 983065, -393221, 2, 983065, -393221, 3, 983065, -393221, 4, 983065, -5, 65535, 196633, -6, 65535, 196633, -7, 65535, 196633, -5, 5, 196633, -6, 5, 196633, -7, 5, 196633, 65531, 5, 196633, 65530, 5, 196633, 65529, 5, 196633, 65529, 65535, 196633, 65530, 65535, 196633, 65531, 65535, 196633, 4, 65535, 196633, 4, 5, 196633, 65540, 65535, 196633, 65540, 5, 196633, 65540, 4, 196633, 65540, 3, 196633, 65540, 2, 196633, 65540, 1, 196633, 65540, 0, 196633, 131076, 65535, 196633, 131076, 0, 196633, 131076, 1, 196633, 131076, 2, 196633, 131076, 3, 196633, 131076, 4, 196633, 131076, 5, 196633, 196612, 5, 196633, 196612, 65535, 196633, 196612, 0, 196633, 196612, 1, 196633, 196612, 2, 196633, 196612, 3, 196633, 196612, 4, 196633, 4, 65534, 25, 3, 65531, 25, 2, 65531, 25, 1, 65531, 25, 0, 65531, 25, 65535, 65531, 25, 65534, 65531, 25, 65533, 65531, 25, 65532, 65531, 25, 65531, 65534, 25, 65531, 65533, 25, 65531, 65532, 25, -5, 9, 18, -5, 8, 18, -6, 9, 18, -6, 8, 18, 65531, 6, 25, 65531, 7, 25, 65532, 10, 25, 65533, 10, 25, 65534, 10, 25, 65535, 10, 25, 0, 10, 25, 1, 10, 25, 2, 10, 25, 3, 10, 25, 4, 6, 25, 4, 7, 25, 4, 8, 25, 4, 9, 25, 65539, 65531, 25, 65538, 65531, 25, 65537, 65531, 25, 65536, 65531, 25, 131071, 65531, 25, 131070, 65531, 25, 131069, 65531, 25, 131068, 65531, 25, 131067, 65532, 25, 131067, 65533, 25, 131067, 65534, 25, 131067, 65535, 25, 131066, 65535, 25, 131065, 65535, 25, 131065, 5, 25, 131066, 5, 25, 131067, 5, 25, 131067, 6, 25, 131067, 7, 25, 131068, 10, 25, 131069, 10, 25, 131070, 10, 25, 131071, 10, 25, 65536, 10, 25, 65537, 10, 25, 65538, 10, 25, 65539, 10, 25, 65540, 6, 25, 65540, 7, 25, 65540, 8, 25, 65540, 9, 25, 65540, 65534, 25, 131076, 65534, 25, 131075, 65531, 25, 131074, 65531, 25, 131073, 65531, 25, 131072, 65531, 25, 196607, 65531, 25, 196606, 65531, 25, 196605, 65531, 25, 196604, 65531, 25, 196603, 65535, 25, 196603, 65534, 25, 196603, 65533, 25, 196603, 65532, 25, 196601, 65535, 25, 196602, 65535, 25, 196603, 5, 25, 196602, 5, 25, 196601, 5, 25, 131076, 6, 25, 131076, 7, 25, 131076, 8, 25, 131076, 9, 25, 131075, 10, 25, 131074, 10, 25, 131073, 10, 25, 131072, 10, 25, 196607, 10, 25, 196606, 10, 25, 196605, 10, 25, 196604, 10, 25, 196603, 6, 25, 196603, 7, 25, 196612, 65534, 25, 196611, 65531, 25, 196610, 65531, 25, 196609, 65531, 25, 196608, 65531, 25, 262143, 65531, 25, 262142, 65531, 25, 262141, 65531, 25, 262140, 65531, 25, 262139, 65532, 25, 262139, 65533, 25, 262139, 65534, 25, 262139, 65535, 25, 262138, 65535, 25, 262137, 65535, 25, 262139, 6, 25, 262139, 5, 25, 262138, 5, 25, 262137, 5, 25, 262139, 7, 25, 196610, 10, 25, 196611, 10, 25, 196609, 10, 25, 196608, 10, 25, 262143, 10, 25, 262142, 10, 25, 262141, 10, 25, 262140, 10, 25, 196612, 6, 25, 196612, 7, 25, 196612, 8, 25, 196612, 9, 25, -458738, 65531, 65545, -458737, 65531, 65545, -458739, 65534, 65545, -458738, 65534, 65545, -458737, 65534, 65545, -458739, 65531, 65545, -458740, 65531, 65545, -458740, 65534, 65545, -524274, 65534, 65540, -524273, 65534, 65540, -524275, 65534, 65540, -524275, 65531, 65540, -524274, 65531, 65540, -524273, 65531, 65540, -393204, 65531, 65545, -393202, 65531, 65545, -393201, 65531, 65545, -393204, 65534, 65545, -393203, 65534, 65545, -393202, 65534, 65545, -393201, 65534, 65545, -393203, 65531, 65545, -327666, 65533, 524314, -327666, 65532, 524314, -262131, 65533, 524314, -262131, 65532, 524314, -196596, 65533, 524314, -196596, 65532, 524314, -131061, 65533, 524314, -131061, 65532, 524314, -65526, 65533, 524314, -65526, 65532, 524314, 9, 65533, 524314, 9, 65532, 524314, 65544, 65533, 524314, 65544, 65532, 524314, 131079, 65533, 524314, 131079, 65532, 524314, 196614, 65532, 524297, 196614, 65533, 524297, 196612, 65533, 25, 196613, 65533, 524297, 196612, 65532, 25, 196613, 65532, 524297, -327665, 65533, 9, -327665, 65532, 9, -327670, 65534, 9, -327669, 65534, 9, -327668, 65534, 9, -327667, 65534, 9, -327666, 65534, 9, -393205, 65534, 9, -393205, 65531, 9, -262131, 65534, 9, -262133, 65534, 9, -262134, 65534, 9, -262132, 65534, 9, -262135, 65534, 9, -196596, 65534, 9, -196597, 65534, 9, -196598, 65534, 9, -196599, 65534, 9, -196600, 65534, 9, -131061, 65534, 9, -131062, 65534, 9, -131063, 65534, 9, -131064, 65534, 9, -131065, 65534, 9, -65526, 65534, 9, -65527, 65534, 9, -65528, 65534, 9, -65529, 65534, 9, -65530, 65534, 9, 6, 65534, 9, 7, 65534, 9, 8, 65534, 9, 9, 65534, 9, 65544, 65534, 9, 65543, 65534, 9, 65542, 65534, 9, 65541, 65534, 9, 131077, 65534, 9, 131078, 65534, 9, 131079, 65534, 9, -327666, 65531, 9, -327667, 65531, 9, -327668, 65531, 9, -327669, 65531, 9, -327670, 65531, 9, -262131, 65531, 9, -262132, 65531, 9, -262133, 65531, 9, -262134, 65531, 9, -262135, 65531, 9, -196596, 65531, 9, -196597, 65531, 9, -196598, 65531, 9, -196599, 65531, 9, -196600, 65531, 9, -131061, 65531, 9, -131062, 65531, 9, -131063, 65531, 9, -131064, 65531, 9, -131065, 65531, 9, -65527, 65531, 9, -65528, 65531, 9, -65529, 65531, 9, -65530, 65531, 9, -65526, 65531, 9, 4, 65531, 983044, 5, 65531, 983044, 6, 65531, 9, 9, 65531, 9, 8, 65531, 9, 7, 65531, 9, 65544, 65531, 9, 65543, 65531, 9, 65542, 65531, 9, 65541, 65531, 9, 65540, 65531, 9, 131079, 65531, 9, 131078, 65531, 9, 131077, 65531, 9, 131076, 65531, 9, 4, 4, 851993, 4, 3, 851993, 4, 2, 851993, 4, 1, 851993, 4, 0, 851993, -65532, 0, 851993, -65532, 1, 851993, -65532, 2, 851993, -65532, 3, 851993, -65532, 4, 851993, -327687, 4, 25, -327687, 3, 25, -327687, 1, 25, -327687, 2, 25, -327687, 0, 25, -262151, 0, 25, -262151, 1, 25, -262151, 2, 25, -262151, 3, 25, -262151, 4, 25, -196615, 4, 25, -196615, 3, 25, -196615, 2, 25, -196615, 1, 25, -196615, 0, 25, -131079, 0, 25, -131079, 1, 25, -131079, 2, 25, -131079, 3, 25, -131079, 4, 25, -65543, 4, 25, -65543, 3, 25, -65543, 2, 25, -65543, 1, 25, -65543, 0, 25, -7, 0, 25, -7, 1, 25, -7, 2, 25, -7, 3, 25, -7, 4, 25, 65529, 4, 25, 65529, 3, 25, 65529, 2, 25, 65529, 1, 25, 65529, 0, 25, 131065, 0, 25, 131065, 1, 25, 131065, 2, 25, 131065, 3, 25, 131065, 4, 25, 196601, 4, 25, 196601, 3, 25, 196601, 2, 25, 196601, 1, 25, 196601, 0, 25, 262137, 0, 25, 262137, 1, 25, 262137, 2, 25, 262137, 3, 25, 262137, 4, 25, 131076, 65533, 1376262, 131076, 65532, 393221, 4, 65533, 0, 65540, 65533, 5, -589808, 65533, 18, -589808, 65532, 18, -524272, 65531, 4, -524272, 65534, 4, -458736, 65531, 9, -458736, 65534, 9, -393200, 65534, 9, -393200, 65531, 9, -327664, 65532, 9, -327664, 65533, 9, 5, 65533, 0, 262139, 9, 393241, 262139, 8, 393241, 327676, 65532, 327705, 327676, 65533, 327705, 327676, 65534, 327705, 327676, 65535, 327705, 327676, 0, 327705, 327676, 1, 327705, 327676, 2, 327705, 327676, 3, 327705, 327676, 4, 327705, 327676, 5, 327705, 327676, 6, 327705, 327676, 7, 327705, 327676, 8, 327705, 327676, 9, 327705, 327677, 65532, 327705, 327677, 65533, 327705, 327677, 65534, 327705, 327677, 65535, 327705, 327677, 0, 327705, 327677, 1, 327705, 327677, 2, 327705, 327677, 3, 327705, 327677, 4, 327705, 327677, 5, 327705, 327677, 6, 327705, 327677, 7, 327705, 327677, 8, 327705, 327677, 9, 327705, 327678, 65532, 327705, 327678, 65533, 327705, 327678, 65534, 327705, 327678, 65535, 327705, 327678, 0, 327705, 327678, 1, 327705, 327678, 2, 327705, 327678, 3, 327705, 327678, 4, 327705, 327678, 5, 327705, 327678, 6, 327705, 327678, 7, 327705, 327678, 8, 327705, 327678, 9, 327705, 327679, 65532, 327705, 327679, 65533, 327705, 327679, 65534, 327705, 327679, 65535, 327705, 327679, 0, 327705, 327679, 1, 327705, 327679, 2, 327705, 327679, 3, 327705, 327679, 4, 327705, 327679, 5, 327705, 327679, 6, 327705, 327679, 7, 327705, 327679, 8, 327705, 327679, 9, 327705, 262144, 65532, 327705, 262144, 65533, 327705, 262144, 65534, 327705, 262144, 65535, 327705, 262144, 0, 327705, 262144, 1, 327705, 262144, 2, 327705, 262144, 3, 327705, 262144, 4, 327705, 262144, 5, 327705, 262144, 6, 327705, 262144, 7, 327705, 262144, 8, 327705, 262144, 9, 327705, 262145, 65532, 327705, 262145, 65533, 327705, 262145, 65534, 327705, 262145, 65535, 327705, 262145, 0, 327705, 262145, 1, 327705, 262145, 2, 327705, 262145, 3, 327705, 262145, 4, 327705, 262145, 5, 327705, 262145, 6, 327705, 262145, 7, 327705, 262145, 8, 327705, 262145, 9, 327705, 262146, 65532, 327705, 262146, 65533, 327705, 262146, 65534, 327705, 262146, 65535, 327705, 262146, 0, 327705, 262146, 1, 327705, 262146, 2, 327705, 262146, 3, 327705, 262146, 4, 327705, 262146, 5, 327705, 262146, 6, 327705, 262146, 7, 327705, 262146, 8, 327705, 262146, 9, 327705, 262147, 65532, 327705, 262147, 65533, 327705, 262147, 65534, 327705, 262147, 65535, 327705, 262147, 0, 327705, 262147, 1, 327705, 262147, 2, 327705, 262147, 3, 327705, 262147, 4, 327705, 262147, 5, 327705, 262147, 6, 327705, 262147, 7, 327705, 262147, 8, 327705, 262147, 9, 327705, 327674, 0, 458777, 327674, 1, 458777, 327674, 2, 458777, 327674, 3, 458777, 327674, 4, 458777, 327675, 0, 458777, 327675, 1, 458777, 327675, 2, 458777, 327675, 3, 458777, 327675, 4, 458777, 65531, 8, 655360, 65530, 8, 655360, 65531, 9, 0, 65530, 9, 0, 131067, 9, 65541, 131066, 9, 65541, 131067, 8, 589829, 131066, 8, 589829, 196603, 8, 589830, 196602, 8, 589830, 196603, 9, 65542, 196602, 9, 65542)
+}
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="DecorGridMap" type="GridMap" parent="."]
+mesh_library = ExtResource("1_v6jjf")
+cell_size = Vector3(1, 1, 1)
+data = {
+"cells": PackedInt32Array(-524275, 65533, 10, -524274, 65533, 10, -524273, 65533, 10, -524272, 65533, 10, -524275, 65532, 655370, -524274, 65532, 655370, -524273, 65532, 655370, -524272, 65532, 655370, 5, 65534, 262156, 5, 65531, 262156, 4, 65533, 10, 4, 65532, 655370, 65531, 8, 655370, 65530, 8, 655370, 65531, 9, 10, 65530, 9, 10)
+}
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="BoxDeleter" parent="." instance=ExtResource("2_xotxx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -5.5, 2.5)
+
+[node name="CollisionShape3D" parent="BoxDeleter" index="0"]
+shape = SubResource("BoxShape3D_rgj2m")
+
+[node name="MeshInstance3D" parent="BoxDeleter" index="1"]
+mesh = SubResource("BoxMesh_pw76g")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="BoxDeleter"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+mesh = SubResource("BoxMesh_f40yi")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="BoxDeleter"]
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_cek11")
+draw_pass_1 = SubResource("SphereMesh_gsj2r")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="BoxDeleter"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+light_color = Color(0.784314, 0.254902, 0, 1)
+light_energy = 16.0
+light_specular = 0.0
+shadow_enabled = true
+distance_fade_enabled = true
+distance_fade_begin = 10.0
+distance_fade_shadow = 10.0
+spot_range = 10.0
+spot_angle = 69.3176
+
+[node name="OnEventSound" type="AudioStreamPlayer3D" parent="BoxDeleter"]
+stream = ExtResource("4_evk18")
+volume_db = 2.0
+max_distance = 22.0
+max_polyphony = 5
+attenuation_filter_db = -8.0
+script = ExtResource("4_dd6sn")
+
+[node name="TheBoxes" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 0, 0)
+
+[node name="InhabitedBox" parent="TheBoxes" instance=ExtResource("3_nj7bn")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.4, -0.5, 0.6)
+
+[node name="InhabitedBox2" parent="TheBoxes" instance=ExtResource("3_nj7bn")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.4, -0.5, 4.4)
+
+[node name="InhabitedBox3" parent="TheBoxes" instance=ExtResource("3_nj7bn")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.4, -0.5, 3.2)
+
+[node name="InhabitedBox4" parent="TheBoxes" instance=ExtResource("3_nj7bn")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.4, -0.5, 1.9)
+
+[node name="InhabitedBox5" parent="TheBoxes" instance=ExtResource("3_nj7bn")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.2, -0.5, 0.6)
+
+[node name="InhabitedBox6" parent="TheBoxes" instance=ExtResource("3_nj7bn")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.2, -0.5, 4.4)
+
+[node name="InhabitedBox7" parent="TheBoxes" instance=ExtResource("3_nj7bn")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.2, -0.5, 3.2)
+
+[node name="InhabitedBox8" parent="TheBoxes" instance=ExtResource("3_nj7bn")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.2, -0.5, 1.9)
+
+[node name="InhabitedBox9" parent="TheBoxes" instance=ExtResource("3_nj7bn")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1, -0.5, 0.6)
+
+[node name="InhabitedBox10" parent="TheBoxes" instance=ExtResource("3_nj7bn")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1, -0.5, 4.4)
+
+[node name="InhabitedBox11" parent="TheBoxes" instance=ExtResource("3_nj7bn")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1, -0.5, 3.2)
+
+[node name="InhabitedBox12" parent="TheBoxes" instance=ExtResource("3_nj7bn")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1, -0.5, 1.9)
+
+[node name="InhabitedBox13" parent="TheBoxes" instance=ExtResource("3_nj7bn")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.2, -0.5, 0.6)
+
+[node name="InhabitedBox14" parent="TheBoxes" instance=ExtResource("3_nj7bn")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.2, -0.5, 4.4)
+
+[node name="InhabitedBox15" parent="TheBoxes" instance=ExtResource("3_nj7bn")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.2, -0.5, 3.2)
+
+[node name="InhabitedBox16" parent="TheBoxes" instance=ExtResource("3_nj7bn")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.2, -0.5, 1.9)
+
+[node name="InhabitedBox17" parent="TheBoxes" instance=ExtResource("3_nj7bn")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.4, -0.5, 0.6)
+
+[node name="InhabitedBox18" parent="TheBoxes" instance=ExtResource("3_nj7bn")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.4, -0.5, 4.4)
+
+[node name="InhabitedBox19" parent="TheBoxes" instance=ExtResource("3_nj7bn")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.4, -0.5, 3.2)
+
+[node name="InhabitedBox20" parent="TheBoxes" instance=ExtResource("3_nj7bn")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.4, -0.5, 1.9)
+
+[node name="InhabitedBox21" parent="TheBoxes" instance=ExtResource("3_nj7bn")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.6, -0.5, 0.6)
+
+[node name="InhabitedBox22" parent="TheBoxes" instance=ExtResource("3_nj7bn")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.6, -0.5, 4.4)
+
+[node name="InhabitedBox23" parent="TheBoxes" instance=ExtResource("3_nj7bn")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.6, -0.5, 3.2)
+
+[node name="InhabitedBox24" parent="TheBoxes" instance=ExtResource("3_nj7bn")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.6, -0.5, 1.9)
+
+[node name="Downlight" parent="." instance=ExtResource("5_qh4kb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, -5, -3)
+
+[node name="Downlight2" parent="." instance=ExtResource("6_fxx03")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 3, -3)
+
+[node name="DoorOpenStatic" parent="." instance=ExtResource("7_37bot")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4, 0, -3)
+
+[node name="Wallpaper" type="MeshInstance3D" parent="DoorOpenStatic"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.875, 0.5, 0)
+mesh = SubResource("BoxMesh_lgwh6")
+
+[node name="Wallpaper2" type="MeshInstance3D" parent="DoorOpenStatic"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.875, 0.5, 0)
+mesh = SubResource("BoxMesh_lgwh6")
+
+[node name="Concrete" type="MeshInstance3D" parent="DoorOpenStatic"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.875, 1.15, 0.000999928)
+mesh = SubResource("BoxMesh_epxor")
+
+[node name="Concrete2" type="MeshInstance3D" parent="DoorOpenStatic"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.875, 1.15, 0.00099802)
+mesh = SubResource("BoxMesh_d2xuu")
+
+[node name="Concrete3" type="MeshInstance3D" parent="DoorOpenStatic"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.65, 0.001)
+mesh = SubResource("BoxMesh_se4js")
+
+[node name="Drywall" type="MeshInstance3D" parent="DoorOpenStatic"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.875, 1.7, 0)
+mesh = SubResource("BoxMesh_na2um")
+
+[node name="Drywall2" type="MeshInstance3D" parent="DoorOpenStatic"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.875, 1.7, 0)
+mesh = SubResource("BoxMesh_na2um")
+
+[node name="Drywall3" type="MeshInstance3D" parent="DoorOpenStatic"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.675, 0)
+mesh = SubResource("BoxMesh_y2lyp")
+
+[node name="Walltrim" type="MeshInstance3D" parent="DoorOpenStatic"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.875, 0, -0.025)
+mesh = SubResource("BoxMesh_2nt1k")
+
+[node name="Walltrim2" type="MeshInstance3D" parent="DoorOpenStatic"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.875, 1, -0.025)
+mesh = SubResource("BoxMesh_2nt1k")
+
+[node name="Walltrim3" type="MeshInstance3D" parent="DoorOpenStatic"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.875, 0, -0.025)
+mesh = SubResource("BoxMesh_2nt1k")
+
+[node name="Walltrim4" type="MeshInstance3D" parent="DoorOpenStatic"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.875, 1, -0.025)
+mesh = SubResource("BoxMesh_2nt1k")
+
+[node name="DoorOpenStatic2" parent="." instance=ExtResource("7_37bot")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -4, 0, 9)
+
+[node name="Wallpaper" type="MeshInstance3D" parent="DoorOpenStatic2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.875, 0.5, 0)
+mesh = SubResource("BoxMesh_lgwh6")
+
+[node name="Wallpaper2" type="MeshInstance3D" parent="DoorOpenStatic2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.875, 0.5, 0)
+mesh = SubResource("BoxMesh_lgwh6")
+
+[node name="Concrete" type="MeshInstance3D" parent="DoorOpenStatic2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.875, 1.15, 0.000999928)
+mesh = SubResource("BoxMesh_epxor")
+
+[node name="Concrete2" type="MeshInstance3D" parent="DoorOpenStatic2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.875, 1.15, 0.00099802)
+mesh = SubResource("BoxMesh_d2xuu")
+
+[node name="Concrete3" type="MeshInstance3D" parent="DoorOpenStatic2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.65, 0.001)
+mesh = SubResource("BoxMesh_se4js")
+
+[node name="Drywall" type="MeshInstance3D" parent="DoorOpenStatic2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.875, 1.7, 0)
+mesh = SubResource("BoxMesh_na2um")
+
+[node name="Drywall2" type="MeshInstance3D" parent="DoorOpenStatic2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.875, 1.7, 0)
+mesh = SubResource("BoxMesh_na2um")
+
+[node name="Drywall3" type="MeshInstance3D" parent="DoorOpenStatic2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.675, 0)
+mesh = SubResource("BoxMesh_y2lyp")
+
+[node name="Walltrim" type="MeshInstance3D" parent="DoorOpenStatic2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.875, 0, -0.025)
+mesh = SubResource("BoxMesh_2nt1k")
+
+[node name="Walltrim2" type="MeshInstance3D" parent="DoorOpenStatic2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.875, 1, -0.025)
+mesh = SubResource("BoxMesh_2nt1k")
+
+[node name="Walltrim3" type="MeshInstance3D" parent="DoorOpenStatic2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.875, 0, -0.025)
+mesh = SubResource("BoxMesh_2nt1k")
+
+[node name="Walltrim4" type="MeshInstance3D" parent="DoorOpenStatic2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.875, 1, -0.025)
+mesh = SubResource("BoxMesh_2nt1k")
+
+[node name="Downlight3" parent="." instance=ExtResource("5_qh4kb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 7)
+
+[node name="Downlight4" parent="." instance=ExtResource("5_qh4kb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -1)
+
+[connection signal="body_entered" from="BoxDeleter" to="BoxDeleter/OnEventSound" method="body_entered"]
+
+[editable path="BoxDeleter"]

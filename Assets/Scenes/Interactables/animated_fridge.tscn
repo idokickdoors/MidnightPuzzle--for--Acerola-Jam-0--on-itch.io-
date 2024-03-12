@@ -422,7 +422,7 @@ shadow_enabled = true
 spot_range = 0.0
 
 [node name="TheMilk" parent="." instance=ExtResource("3_pc4pl")]
-transform = Transform3D(0.170123, 0, -0.985423, 0, 1, 0, 0.985423, 0, 0.170123, 0, -0.482881, 0.0606467)
+transform = Transform3D(0.170125, 0, -0.985423, 0, 1, 0, 0.985423, 0, 0.170125, 0, -0.482881, 0.0606467)
 
 [node name="LightSwitchSound" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -3)

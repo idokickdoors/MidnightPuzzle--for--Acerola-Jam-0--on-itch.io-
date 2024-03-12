@@ -1,6 +1,7 @@
 extends Node3D
 
-const MOVABLE_BOX = preload("res://Assets/Scenes/Interactables/movable_box.tscn")
+
+@export var MOVABLE_BOX = preload("res://Assets/Scenes/Interactables/movable_box.tscn")
 
 var tracked_box
 

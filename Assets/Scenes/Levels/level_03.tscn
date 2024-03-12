@@ -4,10 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://tced2gfbrgy" path="res://Assets/Scenes/Interactables/box_button.tscn" id="2_fn4io"]
 [ext_resource type="MeshLibrary" uid="uid://dcuuevkoxl1di" path="res://Assets/GridMapStuff/Wall_Tiles_Edge.tres" id="2_xhmj2"]
 [ext_resource type="Script" path="res://Assets/Scripts/Interactables/PathPlatform.gd" id="3_okl0h"]
+[ext_resource type="PackedScene" uid="uid://bpjm4uwq1in5o" path="res://Assets/Scenes/Interactables/delay_timer.tscn" id="4_3iptq"]
 [ext_resource type="Material" uid="uid://ckiyl08mh5unu" path="res://Assets/Materials/Drywall.tres" id="4_q4as1"]
 [ext_resource type="Material" uid="uid://bt2i703qbg1dd" path="res://Assets/Materials/GreenDiamondWallpaper.tres" id="5_mmx5u"]
 [ext_resource type="Material" uid="uid://dtlvb0oikgk76" path="res://Assets/Materials/White_Walltrim.tres" id="6_vlqnu"]
-[ext_resource type="Script" path="res://Assets/Scripts/Gameplay/DelayTimer.gd" id="7_fb5r8"]
 [ext_resource type="PackedScene" uid="uid://gxe3tiohahc6" path="res://Assets/Scenes/Objects/downlight.tscn" id="10_qfvpb"]
 [ext_resource type="Material" uid="uid://bb4r5wvpriif4" path="res://Assets/Materials/Wood_Planks.tres" id="10_sisls"]
 [ext_resource type="PackedScene" uid="uid://l4hbh3u6738f" path="res://Assets/Scenes/Interactables/box_spawner.tscn" id="11_etsy2"]
@@ -48,14 +48,14 @@ point_count = 2
 material = ExtResource("10_sisls")
 size = Vector3(1.9, 0.101, 1.9)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1xbmg"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pc0ly"]
 albedo_color = Color(0.803922, 0.756863, 0.768627, 1)
 metallic = 0.6
 metallic_specular = 0.88
 roughness = 0.43
 
 [sub_resource type="BoxMesh" id="BoxMesh_1pviq"]
-material = SubResource("StandardMaterial3D_1xbmg")
+material = SubResource("StandardMaterial3D_pc0ly")
 size = Vector3(2, 0.1, 2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x5ksk"]
@@ -94,17 +94,23 @@ data = {
 }
 metadata/_editor_floor_ = Vector3(0, 4, 0)
 
-[node name="WallTimer" type="Timer" parent="."]
+[node name="WallTimer" parent="." instance=ExtResource("4_3iptq")]
 wait_time = 3.0
-script = ExtResource("7_fb5r8")
 
-[node name="PlatformTimer" type="Timer" parent="."]
+[node name="Sounds" parent="WallTimer" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -2, -5)
+
+[node name="PlatformTimer" parent="." instance=ExtResource("4_3iptq")]
 wait_time = 3.0
-script = ExtResource("7_fb5r8")
 
-[node name="ResetTimer" type="Timer" parent="."]
+[node name="Sounds" parent="PlatformTimer" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -2, -1)
+
+[node name="ResetTimer" parent="." instance=ExtResource("4_3iptq")]
 wait_time = 6.0
-script = ExtResource("7_fb5r8")
+
+[node name="Sounds" parent="ResetTimer" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -1, -1)
 
 [node name="WallButton" parent="." instance=ExtResource("2_fn4io")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -2, -5)
@@ -189,3 +195,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 7, -3)
 [connection signal="activated" from="PlatformButton" to="PlatformTimer" method="start_timer"]
 [connection signal="activated" from="PlatformButton" to="ResetTimer" method="start_timer"]
 [connection signal="deactivated" from="PlatformButton" to="ResetTimer" method="reset_timer"]
+
+[editable path="WallTimer"]
+[editable path="PlatformTimer"]
+[editable path="ResetTimer"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://valy0k08o0mt"]
+[gd_scene load_steps=40 format=3 uid="uid://valy0k08o0mt"]
 
 [ext_resource type="Environment" uid="uid://b8vsfrc48mcs2" path="res://Assets/gameworld_environment.tres" id="1_481ff"]
 [ext_resource type="PackedScene" uid="uid://cx2wgco3sqmvd" path="res://Assets/Scenes/Gameplay/area_checkpoint.tscn" id="1_l776b"]
@@ -12,7 +12,10 @@
 [ext_resource type="PackedScene" uid="uid://dhpld6lq8p3ar" path="res://Assets/Scenes/Interactables/light_detector.tscn" id="7_b2ch0"]
 [ext_resource type="PackedScene" uid="uid://boaoprrmj0bql" path="res://Assets/Scenes/Interactables/door_activatable.tscn" id="8_nkfya"]
 [ext_resource type="PackedScene" uid="uid://d577g6afu5xi" path="res://Assets/Scenes/Interactables/inhabited_box.tscn" id="11_3rsc3"]
+[ext_resource type="Material" uid="uid://bt2i703qbg1dd" path="res://Assets/Materials/GreenDiamondWallpaper.tres" id="12_bwg0i"]
+[ext_resource type="Material" uid="uid://ckiyl08mh5unu" path="res://Assets/Materials/Drywall.tres" id="13_lolmg"]
 [ext_resource type="PackedScene" uid="uid://bffcqgxykq761" path="res://Assets/Scenes/Interactables/animated_fridge.tscn" id="13_p6dif"]
+[ext_resource type="Material" uid="uid://dtlvb0oikgk76" path="res://Assets/Materials/White_Walltrim.tres" id="14_km3x4"]
 [ext_resource type="MeshLibrary" uid="uid://dcuuevkoxl1di" path="res://Assets/GridMapStuff/Wall_Tiles_Edge.tres" id="14_wkhd0"]
 [ext_resource type="PackedScene" uid="uid://b62yunsymvvm8" path="res://Assets/Scenes/Interactables/downlight_togglable.tscn" id="15_10h5x"]
 
@@ -127,6 +130,22 @@ _data = {
 "wall_move_left": SubResource("Animation_46fn7")
 }
 
+[sub_resource type="BoxMesh" id="BoxMesh_k4x1r"]
+material = ExtResource("12_bwg0i")
+size = Vector3(0.25, 1, 0.001)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8f0q2"]
+material = ExtResource("13_lolmg")
+size = Vector3(0.25, 1.3, 0.001)
+
+[sub_resource type="BoxMesh" id="BoxMesh_10lbr"]
+material = ExtResource("13_lolmg")
+size = Vector3(2, 0.65, 0.001)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ini6j"]
+material = ExtResource("14_km3x4")
+size = Vector3(0.25, 0.099, 0.1)
+
 [node name="TestLevel" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -235,7 +254,43 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 6, 3, 
 transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 6, 3, -8)
 
 [node name="Door" parent="." instance=ExtResource("8_nkfya")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4.50536, 0.5, 4.52613)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4.50536, 0.5, 5.52613)
+
+[node name="Wallpaper" type="MeshInstance3D" parent="Door"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.875, 0.5, 0)
+mesh = SubResource("BoxMesh_k4x1r")
+
+[node name="Wallpaper2" type="MeshInstance3D" parent="Door"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.875, 0.5, 0)
+mesh = SubResource("BoxMesh_k4x1r")
+
+[node name="Drywall" type="MeshInstance3D" parent="Door"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.875, 1.7, 0)
+mesh = SubResource("BoxMesh_8f0q2")
+
+[node name="Drywall2" type="MeshInstance3D" parent="Door"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.875, 1.7, 0)
+mesh = SubResource("BoxMesh_8f0q2")
+
+[node name="Drywall3" type="MeshInstance3D" parent="Door"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.675, 0)
+mesh = SubResource("BoxMesh_10lbr")
+
+[node name="Walltrim" type="MeshInstance3D" parent="Door"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.875, 0, 0)
+mesh = SubResource("BoxMesh_ini6j")
+
+[node name="Walltrim2" type="MeshInstance3D" parent="Door"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.875, 1, 0)
+mesh = SubResource("BoxMesh_ini6j")
+
+[node name="Walltrim3" type="MeshInstance3D" parent="Door"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.875, 0, 0)
+mesh = SubResource("BoxMesh_ini6j")
+
+[node name="Walltrim4" type="MeshInstance3D" parent="Door"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.875, 1, 0)
+mesh = SubResource("BoxMesh_ini6j")
 
 [node name="InhabitedBox" parent="." instance=ExtResource("11_3rsc3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 1, -5)

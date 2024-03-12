@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://bf0hgq0qxi5q7"]
+[gd_scene load_steps=56 format=3 uid="uid://bf0hgq0qxi5q7"]
 
 [ext_resource type="Material" uid="uid://bt2i703qbg1dd" path="res://Assets/Materials/GreenDiamondWallpaper.tres" id="1_ral46"]
 [ext_resource type="Material" uid="uid://ckiyl08mh5unu" path="res://Assets/Materials/Drywall.tres" id="2_yrjln"]
@@ -7,6 +7,7 @@
 [ext_resource type="Material" uid="uid://ckcqo14ne0nc0" path="res://Assets/Materials/RealishWood.tres" id="5_uxr4u"]
 [ext_resource type="Material" uid="uid://bgqshct8bg1x8" path="res://Assets/Materials/SmoothBrass.tres" id="6_qijob"]
 [ext_resource type="Material" uid="uid://dcv2iepys7y3b" path="res://Assets/Materials/Metalic_Smooth.tres" id="7_ninom"]
+[ext_resource type="Material" uid="uid://clrqg1aiwedt" path="res://Assets/Materials/Concrete.tres" id="8_guq6q"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_wiubd"]
 _surfaces = [{
@@ -215,6 +216,13 @@ shadow_mesh = SubResource("ArrayMesh_62xo8")
 
 [sub_resource type="BoxMesh" id="BoxMesh_b3622"]
 material = ExtResource("2_yrjln")
+
+[sub_resource type="PrismMesh" id="PrismMesh_7suib"]
+material = ExtResource("2_yrjln")
+left_to_right = 1.0
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_k6gmu"]
+points = PackedVector3Array(0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_gdbpl"]
 _surfaces = [{
@@ -437,9 +445,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_i02or")
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_k6gmu"]
-points = PackedVector3Array(0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5)
-
 [sub_resource type="ArrayMesh" id="ArrayMesh_yggt1"]
 _surfaces = [{
 "aabb": AABB(-0.5, -0.5, -0.5, 1, 1, 1),
@@ -596,6 +601,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_ynn0s")
 
+[sub_resource type="BoxMesh" id="BoxMesh_pcyco"]
+material = ExtResource("8_guq6q")
+
 [node name="WallTiles_Edge" type="Node3D"]
 
 [node name="Wallpaper_I" type="MeshInstance3D" parent="."]
@@ -686,6 +694,16 @@ mesh = SubResource("BoxMesh_b3622")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Drywall_Box/StaticBody3D"]
 shape = SubResource("BoxShape3D_0rmn8")
+
+[node name="Drywall_Wedge" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 4)
+mesh = SubResource("PrismMesh_7suib")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Drywall_Wedge"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Drywall_Wedge/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_k6gmu")
 
 [node name="DoubleTrim_I" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
@@ -786,3 +804,12 @@ shape = SubResource("BoxShape3D_0rmn8")
 [node name="CupboardSink" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -2)
 mesh = SubResource("ArrayMesh_kg6dk")
+
+[node name="ConcreteBlock" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 2)
+mesh = SubResource("BoxMesh_pcyco")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="ConcreteBlock"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ConcreteBlock/StaticBody3D"]
+shape = SubResource("BoxShape3D_0rmn8")

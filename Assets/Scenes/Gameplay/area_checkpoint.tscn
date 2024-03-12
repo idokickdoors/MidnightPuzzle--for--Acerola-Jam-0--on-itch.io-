@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cx2wgco3sqmvd"]
+[gd_scene load_steps=6 format=3 uid="uid://cx2wgco3sqmvd"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/Gameplay/area_checkpoint.gd" id="1_yvk6w"]
 
@@ -13,11 +13,27 @@ material = SubResource("StandardMaterial3D_w2fow")
 radius = 0.4
 height = 1.9
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_77ddg"]
+transparency = 1
+albedo_color = Color(0.207843, 0.447059, 1, 0.368627)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_3tw4i"]
+material = SubResource("StandardMaterial3D_77ddg")
+top_radius = 0.0
+bottom_radius = 0.2
+height = 0.6
+cap_top = false
+
 [node name="AreaCheckpoint" type="Area3D"]
 script = ExtResource("1_yvk6w")
 
 [node name="Bean" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_4fjsf")
 skeleton = NodePath("../CollisionShape3D")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -0.5)
+mesh = SubResource("CylinderMesh_3tw4i")
+skeleton = NodePath("../Bean")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

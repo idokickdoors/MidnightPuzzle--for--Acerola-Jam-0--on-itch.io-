@@ -43,6 +43,9 @@ func find_box() -> RigidBody3D:
 	return null
 
 func set_child_material_overlay(node, material):
+	if not node:
+		return
+	
 	for child in node.get_children(true):
 		if child is MeshInstance3D:
 			child.material_overlay = material

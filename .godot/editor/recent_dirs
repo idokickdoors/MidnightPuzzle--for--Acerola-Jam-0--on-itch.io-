@@ -1,8 +1,9 @@
 res://Assets/Scripts/Interactables
 res://Assets/Scenes/Levels
+res://Assets/Scripts/Gameplay
 res://Assets/GridMapStuff
-res://Assets/3dModels/BoxLegs
 res://Assets/Scenes/Interactables
+res://Assets/3dModels/BoxLegs
 res://Assets/Materials
 res://Assets/Scenes/Objects
 res://Assets/Shaders/Grass

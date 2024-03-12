@@ -7,3 +7,10 @@ Sounds:
 	CardboardBox (https://freesound.org/people/BenDrain/sounds/487846/)
 	Door (https://freesound.org/people/kyles/sounds/451830/)
 	LightSwitch (https://freesound.org/people/aphom000/sounds/687108/)
+	Timer:
+		Timer_Ticking (https://freesound.org/people/MATRIXXX_/sounds/487729/)
+		Timer_Ended (https://freesound.org/people/SpliceSound/sounds/218343/)
+	Burning (https://freesound.org/people/vibe_crc/sounds/50620/)
+	Creature:
+		CreatureNoises (https://freesound.org/people/FullMetalJedi/sounds/530126/)
+		CreatureSteps (https://freesound.org/people/mateozugi19/sounds/446823/)
