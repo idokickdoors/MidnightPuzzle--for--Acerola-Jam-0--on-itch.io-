@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ch6oexsd0ofwf"]
+[gd_scene load_steps=9 format=3 uid="uid://ch6oexsd0ofwf"]
 
 [ext_resource type="PackedScene" uid="uid://cwpfqtf3bxbh4" path="res://Assets/3dModels/Door/editable_door.tscn" id="1_ewelc"]
 [ext_resource type="PackedScene" uid="uid://c1fns26mwt72q" path="res://Assets/3dModels/Door/editable_door_handle.tscn" id="2_pye7l"]
@@ -15,6 +15,9 @@ size = Vector3(0.15, 2.2, 0.1)
 [sub_resource type="BoxMesh" id="BoxMesh_lpa4u"]
 material = ExtResource("4_mv2ju")
 size = Vector3(1.5, 0.15, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8mrnv"]
+size = Vector3(2, 0.7, 0.001)
 
 [node name="DoorClosedStatic" type="Node3D"]
 
@@ -51,3 +54,9 @@ mesh = SubResource("BoxMesh_n15yj")
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="DoorFrame"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.175, 0)
 mesh = SubResource("BoxMesh_lpa4u")
+
+[node name="AboveCollision" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.6, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AboveCollision"]
+shape = SubResource("BoxShape3D_8mrnv")

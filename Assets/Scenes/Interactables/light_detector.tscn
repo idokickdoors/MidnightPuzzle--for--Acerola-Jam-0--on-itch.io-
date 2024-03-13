@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dhpld6lq8p3ar"]
+[gd_scene load_steps=10 format=3 uid="uid://dhpld6lq8p3ar"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/Interactables/LightDetector.gd" id="1_bchi4"]
 [ext_resource type="Material" uid="uid://bsa0csbf736mp" path="res://Assets/Materials/Button_Inactive.tres" id="2_e4gqw"]
 [ext_resource type="Material" uid="uid://dcv2iepys7y3b" path="res://Assets/Materials/Metalic_Smooth.tres" id="3_v3fye"]
+[ext_resource type="AudioStream" uid="uid://brrgr1tk417eh" path="res://Sounds/Box_Button/button_on.ogg" id="4_4igl3"]
+[ext_resource type="AudioStream" uid="uid://dt6y3s3qs8w6c" path="res://Sounds/Box_Button/button_off.ogg" id="5_a81vq"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_o8hnw"]
 height = 0.2
@@ -69,3 +71,17 @@ light_energy = 1.323
 light_size = 0.286
 light_specular = 0.397
 omni_range = 3.0
+
+[node name="LightEmitterOn" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_4igl3")
+volume_db = -10.0
+pitch_scale = 2.0
+max_distance = 16.0
+attenuation_filter_db = -8.0
+
+[node name="LightEmitterOff" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_a81vq")
+volume_db = -10.0
+pitch_scale = 2.0
+max_distance = 16.0
+attenuation_filter_db = -8.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://cxbll2e0wpuiy"]
+[gd_scene load_steps=38 format=3 uid="uid://cxbll2e0wpuiy"]
 
 [ext_resource type="PackedScene" uid="uid://cx2wgco3sqmvd" path="res://Assets/Scenes/Gameplay/area_checkpoint.tscn" id="1_njypx"]
 [ext_resource type="Material" uid="uid://ckcqo14ne0nc0" path="res://Assets/Materials/RealishWood.tres" id="1_yt6qq"]
@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://gxe3tiohahc6" path="res://Assets/Scenes/Objects/downlight.tscn" id="8_6wnl3"]
 [ext_resource type="PackedScene" uid="uid://df27vkmkpxbmn" path="res://Assets/Scenes/Objects/window.tscn" id="9_yy6t6"]
 [ext_resource type="PrismMesh" uid="uid://dheereckxdv3x" path="res://Assets/Shaders/Grass/grass_blade2.tres" id="10_1bgm8"]
+[ext_resource type="AudioStream" uid="uid://v4fqwg686bf2" path="res://Sounds/Ambient/Crickets/Crickets_Left.ogg" id="12_efagb"]
+[ext_resource type="AudioStream" uid="uid://dc4cp357rks05" path="res://Sounds/Ambient/Crickets/Crickets_Right.ogg" id="13_hfoef"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kokm7"]
 size = Vector3(1, 0.2, 1)
@@ -258,3 +260,19 @@ skeleton = NodePath("../MultiMeshInstance3D")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.33472, 0, 0)
 size = Vector3(10.1945, 2.20396, 18.0575)
 material = SubResource("FogMaterial_w886g")
+
+[node name="Cricket_L" type="AudioStreamPlayer3D" parent="Grass"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.84612, 2, 2.634)
+stream = ExtResource("12_efagb")
+volume_db = -8.0
+autoplay = true
+max_distance = 10.0
+attenuation_filter_db = -8.0
+
+[node name="Cricket_R" type="AudioStreamPlayer3D" parent="Grass"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.87462, 2, -2.9445)
+stream = ExtResource("13_hfoef")
+volume_db = -8.0
+autoplay = true
+max_distance = 10.0
+attenuation_filter_db = -8.0

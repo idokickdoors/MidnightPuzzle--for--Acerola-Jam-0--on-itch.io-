@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://boaoprrmj0bql"]
+[gd_scene load_steps=22 format=3 uid="uid://boaoprrmj0bql"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/Interactables/AnimatedDoor.gd" id="1_roe2p"]
 [ext_resource type="Material" uid="uid://bsa0csbf736mp" path="res://Assets/Materials/Button_Inactive.tres" id="2_s1xkn"]
@@ -171,6 +171,9 @@ _data = {
 [sub_resource type="BoxShape3D" id="BoxShape3D_em03v"]
 size = Vector3(2.4, 4.4, 0.2)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_sbhhk"]
+size = Vector3(2, 0.7, 0.001)
+
 [sub_resource type="BoxMesh" id="BoxMesh_i6v5n"]
 material = ExtResource("7_srqqx")
 size = Vector3(0.15, 2.2, 0.1)
@@ -207,6 +210,12 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.6, 1.1, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2, 0, 0)
 shape = SubResource("BoxShape3D_em03v")
+
+[node name="AboveCollision" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.6, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AboveCollision"]
+shape = SubResource("BoxShape3D_sbhhk")
 
 [node name="DoorModel" type="Node3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.25, -0.6, 1.1, 0)

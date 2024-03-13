@@ -5,6 +5,9 @@ const BUTTON_INACTIVE = preload("res://Assets/Materials/Button_Inactive.tres")
 @onready var light_disc = $LightDisc
 @onready var light_emitter = $LightEmitter
 
+@onready var sfx_on = $LightEmitterOn
+@onready var sfx_off = $LightEmitterOff
+
 signal activated
 signal deactivated
 var active := false
@@ -29,6 +32,8 @@ func _physics_process(_delta):
 	if not active == was_active:
 		if active:
 			activated.emit()
+			sfx_on.play()
 		else:
 			deactivated.emit()
+			sfx_off.play()
 	was_active = active

@@ -14,3 +14,9 @@ Sounds:
 	Creature:
 		CreatureNoises (https://freesound.org/people/FullMetalJedi/sounds/530126/)
 		CreatureSteps (https://freesound.org/people/mateozugi19/sounds/446823/)
+	Ambient:
+		Crickets (https://freesound.org/people/Nox_Sound/sounds/637083/)
+		Fridge:
+			FridgeOpen/FridgeClose (https://freesound.org/people/jackjames_tomknevitt/sounds/209533/)
+			FridgeHum (https://freesound.org/people/kyles/sounds/451164/)
+			DropMilk (https://freesound.org/people/ittou/sounds/465451/)

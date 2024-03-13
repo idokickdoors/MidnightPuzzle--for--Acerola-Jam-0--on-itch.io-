@@ -2,16 +2,23 @@ extends Node
 
 const CHARACTER = preload("res://Assets/Scenes/Gameplay/Character.tscn")
 
+@onready var check_reached_anim = $CheckpointReachedNotif/CheckReachedAnim
+
 var level_node
 var level_res_path
 var level_transform
 var spawn_transform
 
 func set_current_level(node: Node3D, spawn_location: Transform3D):
+	if level_node == node:
+		return
+	
 	level_node = node
 	level_res_path = node.scene_file_path
 	level_transform = node.global_transform
 	spawn_transform = spawn_location
+	
+	check_reached_anim.play("CheckpointReachedAnim")
 
 func reload_from_checkpoint():
 	var parent = level_node.get_parent()

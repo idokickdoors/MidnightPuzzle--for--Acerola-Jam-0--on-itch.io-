@@ -81,7 +81,9 @@ shadow_mesh = SubResource("ArrayMesh_utq05")
 script = ExtResource("1_0appr")
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.1)
 target_position = Vector3(0, 0, 100)
+hit_from_inside = true
 
 [node name="Visual" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)

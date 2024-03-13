@@ -69,6 +69,10 @@ script = ExtResource("2_8e3e5")
 [node name="BoxGrabber" type="Node" parent="Camera"]
 script = ExtResource("3_ttied")
 
+[node name="GripSlipTimer" type="Timer" parent="Camera/BoxGrabber"]
+wait_time = 0.4
+one_shot = true
+
 [node name="CameraRay" type="RayCast3D" parent="Camera"]
 target_position = Vector3(0, 0, -3)
 
@@ -114,3 +118,5 @@ shape = SubResource("CapsuleShape3D_w6a14")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.8, 0)
 stream = SubResource("AudioStreamRandomizer_lc0ri")
 volume_db = -20.0
+
+[connection signal="timeout" from="Camera/BoxGrabber/GripSlipTimer" to="Camera/BoxGrabber" method="grip_slip"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://yqvjsjiqndsc"]
+[gd_scene load_steps=32 format=3 uid="uid://yqvjsjiqndsc"]
 
 [ext_resource type="PackedScene" uid="uid://cx2wgco3sqmvd" path="res://Assets/Scenes/Gameplay/area_checkpoint.tscn" id="1_aamsq"]
 [ext_resource type="PackedScene" uid="uid://bffcqgxykq761" path="res://Assets/Scenes/Interactables/animated_fridge.tscn" id="1_q285q"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://cyaowqub47icv" path="res://Assets/Scenes/Objects/window_wide.tscn" id="6_6j0ap"]
 [ext_resource type="PrismMesh" uid="uid://dheereckxdv3x" path="res://Assets/Shaders/Grass/grass_blade2.tres" id="7_3nu8u"]
 [ext_resource type="PackedScene" uid="uid://ch6oexsd0ofwf" path="res://Assets/Scenes/Objects/door_closed_static.tscn" id="8_if4an"]
+[ext_resource type="AudioStream" uid="uid://v4fqwg686bf2" path="res://Sounds/Ambient/Crickets/Crickets_Left.ogg" id="8_n1jrv"]
+[ext_resource type="AudioStream" uid="uid://dc4cp357rks05" path="res://Sounds/Ambient/Crickets/Crickets_Right.ogg" id="9_6nsv0"]
 [ext_resource type="Material" uid="uid://bt2i703qbg1dd" path="res://Assets/Materials/GreenDiamondWallpaper.tres" id="9_msmsm"]
 [ext_resource type="Material" uid="uid://dtlvb0oikgk76" path="res://Assets/Materials/White_Walltrim.tres" id="10_57ly2"]
 
@@ -173,6 +175,22 @@ skeleton = NodePath("../MultiMeshInstance3D")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.33472, 0, 0)
 size = Vector3(10.1945, 2.20396, 18.0575)
 material = SubResource("FogMaterial_d2abq")
+
+[node name="Cricket_L" type="AudioStreamPlayer3D" parent="Grass"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.84612, 2, 2.634)
+stream = ExtResource("8_n1jrv")
+volume_db = -8.0
+autoplay = true
+max_distance = 10.0
+attenuation_filter_db = -8.0
+
+[node name="Cricket_R" type="AudioStreamPlayer3D" parent="Grass"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.87462, 2, -2.9445)
+stream = ExtResource("9_6nsv0")
+volume_db = -8.0
+autoplay = true
+max_distance = 10.0
+attenuation_filter_db = -8.0
 
 [node name="DoorClosedStatic" parent="." instance=ExtResource("8_if4an")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 7, -1, 5)

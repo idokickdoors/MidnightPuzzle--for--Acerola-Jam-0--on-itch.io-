@@ -14,7 +14,7 @@ func set_beam_length(size: float):
 func _physics_process(_delta):
 	if raycast.is_colliding():
 		var hit_point = raycast.get_collision_point()
-		var dist = position.distance_to(hit_point)
+		var dist = global_position.distance_to(hit_point)
 		set_beam_length(dist)
 		
 		var hit_node: Node3D = raycast.get_collider()

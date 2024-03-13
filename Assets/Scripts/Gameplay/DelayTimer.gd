@@ -5,6 +5,10 @@ extends Timer
 
 @export var use_sound: bool = true
 
+@onready var sounds = $Sounds
+func _ready():
+	sounds.global_position = get_parent().global_position + sounds.global_position
+
 func reset_timer():
 	stop()
 	if use_sound:

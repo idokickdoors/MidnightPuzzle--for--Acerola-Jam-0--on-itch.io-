@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c2oy8p27j42x0"]
+[gd_scene load_steps=15 format=3 uid="uid://c2oy8p27j42x0"]
 
 [ext_resource type="Environment" uid="uid://b8vsfrc48mcs2" path="res://Assets/gameworld_environment.tres" id="1_s6h25"]
 [ext_resource type="PackedScene" uid="uid://bv4l75ridtjmv" path="res://Assets/Scenes/Gameplay/Character.tscn" id="2_7vsox"]
@@ -12,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://yqvjsjiqndsc" path="res://Assets/Scenes/Levels/kitchen.tscn" id="8_wxve1"]
 [ext_resource type="PackedScene" uid="uid://u2pu2r5rgtnj" path="res://Assets/Scenes/Levels/level_06.tscn" id="9_r7auq"]
 [ext_resource type="PackedScene" uid="uid://b7rjy7kesme6d" path="res://Assets/Scenes/Levels/level_07.tscn" id="10_bl3fy"]
+[ext_resource type="PackedScene" uid="uid://drkind0mqbpdc" path="res://Assets/Scenes/Levels/level_09.tscn" id="12_h6r6r"]
+[ext_resource type="PackedScene" uid="uid://3uxcbrgexort" path="res://Assets/Scenes/Levels/level_08.tscn" id="13_ahbiw"]
 
 [node name="Game" type="Node"]
 
@@ -19,7 +21,7 @@
 environment = ExtResource("1_s6h25")
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.999861, 0.00617585, 0.0154995, -0.0146166, -0.123733, 0.992208, 0.00804552, -0.992296, -0.123625, 0, 0, 0)
+transform = Transform3D(0.00804546, -0.992296, -0.123626, -0.0146166, -0.123733, 0.992208, -0.999861, -0.00617579, -0.0154995, 0, 0, 0)
 light_energy = 0.36
 shadow_enabled = true
 shadow_blur = 0.293
@@ -52,8 +54,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.5, 24.5, 27.5)
 [node name="Level_07" parent="." instance=ExtResource("10_bl3fy")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -53.5, 24.5, 32.5)
 
+[node name="Level_08" parent="." instance=ExtResource("13_ahbiw")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -61.5, 35.5, 42.5)
+
+[node name="Level_09" parent="." instance=ExtResource("12_h6r6r")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -68.5, 41.5, 47.5)
+
 [node name="Kitchen" parent="." instance=ExtResource("8_wxve1")]
-transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, -68.5, 40.5, 27.5026)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -71.5, 42.5, 67.5026)
 
 [node name="BoxDeleter" parent="." instance=ExtResource("7_arhp4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
+visible = false
