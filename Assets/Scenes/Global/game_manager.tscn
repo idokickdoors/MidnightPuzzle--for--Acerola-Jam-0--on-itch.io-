@@ -41,6 +41,7 @@ _data = {
 }
 
 [node name="GameManager" type="Node"]
+process_mode = 3
 script = ExtResource("1_8l2y7")
 
 [node name="CheckpointReachedNotif" type="Label" parent="."]

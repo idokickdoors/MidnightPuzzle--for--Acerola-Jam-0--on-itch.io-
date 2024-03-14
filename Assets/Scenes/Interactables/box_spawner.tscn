@@ -15,4 +15,5 @@ material = SubResource("StandardMaterial3D_jg2iq")
 script = ExtResource("1_t8typ")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("BoxMesh_e76nl")

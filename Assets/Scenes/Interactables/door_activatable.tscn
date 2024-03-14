@@ -286,8 +286,10 @@ light_size = 0.434
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
 stream = ExtResource("9_0wdje")
 volume_db = -10.0
+max_distance = 16.0
 
 [node name="DoorClose" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
 stream = ExtResource("10_dys28")
 volume_db = -12.0
+max_distance = 16.0

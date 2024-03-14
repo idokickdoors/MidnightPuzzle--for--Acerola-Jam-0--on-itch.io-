@@ -61,4 +61,4 @@ func _on_fullscreen_pressed():
 		fullscreen_tick_label.text = "X"
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
-		fullscreen_tick_label.text = "fullscreen_tick_label"
+		fullscreen_tick_label.text = ""

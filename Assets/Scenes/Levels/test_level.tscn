@@ -18,7 +18,7 @@
 [ext_resource type="Material" uid="uid://dtlvb0oikgk76" path="res://Assets/Materials/White_Walltrim.tres" id="14_km3x4"]
 [ext_resource type="MeshLibrary" uid="uid://dcuuevkoxl1di" path="res://Assets/GridMapStuff/Wall_Tiles_Edge.tres" id="14_wkhd0"]
 [ext_resource type="PackedScene" uid="uid://b62yunsymvvm8" path="res://Assets/Scenes/Interactables/downlight_togglable.tscn" id="15_10h5x"]
-[ext_resource type="PackedScene" uid="uid://ckso3012kq8m8" path="res://Assets/Scenes/Levels/level_03.tscn" id="19_1ixw6"]
+[ext_resource type="PackedScene" uid="uid://busmggw148t3t" path="res://Assets/Scenes/Gameplay/box_deleter.tscn" id="20_m5fob"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_37lur"]
 size = Vector3(1, 0.2, 1)
@@ -316,8 +316,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 4, 4)
 [node name="Downlight_togglable2" parent="." instance=ExtResource("15_10h5x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 3, 7)
 
-[node name="Level_03" parent="." instance=ExtResource("19_1ixw6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.59414, 1.57057, -9.53439)
+[node name="BoxDeleter" parent="." instance=ExtResource("20_m5fob")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
 
 [connection signal="activated" from="BoxButton" to="PathPlatform" method="activate"]
 [connection signal="activated" from="BoxButton" to="MovingWall" method="activate"]
